@@ -7,6 +7,7 @@ class CreateBook extends Component {
         book_title: "",
         description: "",
         book_year: "",
+        writer: "",
         poster: ""
     }
 
@@ -42,6 +43,7 @@ class CreateBook extends Component {
             book_title: "",
             description: "",
             book_year: "",
+            writer: "",
             poster: ""
           });
           console.log('estado HANDLE SUBMIT', res)
@@ -74,6 +76,16 @@ class CreateBook extends Component {
             name="book_year"
             value={this.state.book_year}
             placeholder="Book year"
+            onChange={(e) => this.handleChange(e)}
+          />
+
+          <label htmlFor="">Escritor</label>
+          <input
+            className="input"
+            type="text"
+            name="writer"
+            value={this.state.writer}
+            placeholder="Escritor"
             onChange={(e) => this.handleChange(e)}
           />
 

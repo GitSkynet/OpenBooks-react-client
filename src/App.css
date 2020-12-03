@@ -158,7 +158,7 @@ button.navbar-button {
 	}
   }
 
-  .container2{
+.container2{
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -166,25 +166,100 @@ button.navbar-button {
 	justify-content: space-around;
 	align-items: flex-start;
 	align-content: space-around;
-  }
+}
 
-  .card{
+.container3{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: flex-start;
+}
+
+.edit-form{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 10px;
+	padding: 10px;
+	flex-wrap: nowrap;
+}
+
+.edit-form label, input{
+	margin: 10px;
+	padding: 10px;
+}
+
+.card{
 	width: 280px;
 	border: 1px solid black;
 	border-radius: 10px;
 	margin: 10px auto;
-  }
+}
 
-  .card img{
-	  width: 100%;
-	  height: 400px;
-  }
+.card img{
+	width: 100%;
+	height: 400px;
+}
 
-  .create-div{
-	  width: 100%;
-	  height: 200px;
-	  background-image: url('https://i2r9x7i6.stackpathcdn.com/app/uploads/2019/09/The-Best-New-Books-to-Add-to-Your-September-Reading-List.jpg');
-	  background-position: center;
-	  background-repeat: no-repeat;
-	  background-size: cover;
-  }
+.card2{
+	max-width: 100%;
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 10px auto;
+}
+
+.img-div{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.card2 img{
+	width: 260px;
+	height: 380px;
+}
+
+.create-div{
+	width: 100%;
+	height: 200px;
+	background-image: url('https://i2r9x7i6.stackpathcdn.com/app/uploads/2019/09/The-Best-New-Books-to-Add-to-Your-September-Reading-List.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.align-delete{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.align-delete Button{
+	margin: 10px;
+	padding: 5px 10px;
+	width: 100px;
+	background-color: #2b30c0;
+	border-radius: 10px;
+	border: 1px solid #2b30c0;
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}
+
+.align-delete > a{
+	margin: 10px;
+	padding: 5px 10px;
+	width: 100px;
+	background-color: #2b30c0;
+	border-radius: 10px;
+	border: 1px solid #2b30c0;
+	text-decoration: none;
+	cursor: pointer;
+	color: white;
+}

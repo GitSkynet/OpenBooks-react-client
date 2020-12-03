@@ -12,6 +12,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreateBook from './components/CreateBook';
 import UpdatedBook from './components/UpdateBook';
 import DetailsBook from './components/DetailsBook';
+import Home from "./pages/Home";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Navbar />
 
           <Switch>
+            <Route exact path='/' component={Home} />
             <AnonRoute path='/signup' component={Signup} />
             <AnonRoute path='/login' component={Login} />
             <Route exact path='/books' component={Books} />
