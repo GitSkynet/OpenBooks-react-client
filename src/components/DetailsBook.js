@@ -11,17 +11,12 @@ class DetailsBook extends Component {
 
     getDetailsBook = () => {
         const id = this.props.match.params.id
-        console.log(id, 'IDDDDDDDDDDDDD')
         axios.get(`https://www.etnassoft.com/api/v1/get/?id=${id}`).then(response =>{
         const book = response.data[0]    
-        this.setState({book: book})
-            console.log(this.state.book, "RESPONSE.DATAAAAA")
+        this.setState({book: book});
+        console.log(this.state.book)
         })
     }
-    // getDetailsBook = async () => {
-    //     let res = await service.getDetailsBook(this.props.match.params.id);
-    //     this.setState({ book: res })
-    // }
 
     deleteBook = async () => {
         await service.deleteBook(this.props.match.params.id);
@@ -34,7 +29,6 @@ class DetailsBook extends Component {
 
     render() {
         const book = this.state.book
-        console.log(this.book, "DESTRUCTURED")
         return (
             <div className="card2">
                 <div className="img-div">

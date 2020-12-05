@@ -25,7 +25,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <AnonRoute path='/signup' component={Signup} />
             <AnonRoute path='/login' component={Login} />
-            <Route exact path='/books' component={Books} />
+            <Route exact path='/books/:name' component={Books} />
             <Route exact path='/books/upload/:id' component={UpdatedBook} />
             <Route exact path='/books/create' component={CreateBook} />
             <PrivateRoute exact path="/details/:id" component={DetailsBook} />
