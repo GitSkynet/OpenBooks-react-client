@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import service from '../api/service';
 import SearchBar from "../components/SearchBar";
 import SearchResult from "../components/SearchResult";
-import { Carousel } from 'react-bootstrap';
+import  Carrousel from '../components/Carrousel';
 
 class Home extends Component {
 
@@ -58,24 +58,7 @@ class Home extends Component {
             return <SearchResult key={index} theBook={oneBook} />
           })}
         </div>
-        <Carousel>
-          {this.state.books.map((oneBook, index) => {
-            return (
-              <Carousel.Item>
-                <img
-                  style={{height: "300px", backgroundPosition: "cover"}}
-                  className="d-block w-100"
-                  src={oneBook.cover}
-                  alt="First slide"
-                />
-                <Carousel.Caption>
-                  <h3>{oneBook.title}</h3>
-                  <p><a href={`/details/${oneBook.ID}`}>Nulla vitae elit libero, a pharetra augue mollis interdum.</a></p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            )
-          })}
-        </Carousel>
+        <Carrousel />
         <div className="home-section">
           <h1>Categories!</h1>
           <h2>Discover all the categories on our Web!</h2>

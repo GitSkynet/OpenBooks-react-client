@@ -8,10 +8,9 @@ class Service {
     });
   }
 
-  getBooks = async () => {
+  getBooks = async (pagina =0) => {
     try {
-      const res = await this.service.get("/books/mybooks");
-      console.log(res, "REEESSSSSSS GETBOOKS")
+      const res = await this.service.get(`/books/mybooks?page=` + pagina);
       return res
     } catch (error) {
       console.log(error)

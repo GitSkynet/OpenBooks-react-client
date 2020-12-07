@@ -14,7 +14,7 @@ class DetailsBook extends Component {
         axios.get(`https://www.etnassoft.com/api/v1/get/?id=${id}`).then(response =>{
         const book = response.data[0]    
         this.setState({book: book});
-        console.log(this.state.book)
+        console.log(this.state.book.url_download)
         })
     }
 
@@ -28,7 +28,7 @@ class DetailsBook extends Component {
     }
 
     render() {
-        const book = this.state.book
+        const book = this.state.book;
         return (
             <div className="card2">
                 <div className="img-div">
@@ -39,7 +39,7 @@ class DetailsBook extends Component {
                     <h3>{book.title}</h3>
                     <h4>{book.author}</h4>
                     <p>Descripción : <br/> {book.content}</p>
-                    <a href={book.url_download}>Download</a>
+                    <Button><a href={book.url_download} target="_blank" rel="noopener noreferrer">Download</a></Button>
                 </div>
                 <div className="align-delete">
                     <Button onClick={() => this.deleteBook(book.ID)} >Delete</Button>
