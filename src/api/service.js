@@ -4,14 +4,14 @@ class Service {
   constructor() {
     this.service = axios.create({
       baseURL: process.env.REACT_APP_API_URI,
-      // baseURL: "https://www.etnassoft.com/api/v1/get/?",
-      withCredentials: true
+      //withCredentials: true
     });
   }
 
   getBooks = async () => {
     try {
-      const res = await this.service.get("/books");
+      const res = await this.service.get("/books/mybooks");
+      console.log(res, "REEESSSSSSS GETBOOKS")
       return res
     } catch (error) {
       console.log(error)
@@ -20,9 +20,7 @@ class Service {
 
   getBooksFromApi = async (pagina, name) => {
     try {
-
       const page = (pagina*10);
-      console.log(name)
       const count = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&count_items=true`);
       const items = count.data.num_items;
       const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&num_items=${items}&results_range=${page},10`);
@@ -38,6 +36,15 @@ class Service {
       return res.data
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  getCarrousel = async () => {
+    try{	
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?subcategory=programacion_javascript_ajax&num_items=6`);
+      return res.data;
+    }catch(err){
+      console.log(err)
     }
   }
 
@@ -79,7 +86,7 @@ class Service {
     console.log("The book updated is: ", updatedBook);
 
     try {
-      const res = await this.service.create("/books/upload/" + id, {updatedBook});
+      const res = await this.service.post("/books/upload/" + id, {updatedBook});
       return res.data;
     } catch (error) {
       console.log(error);
@@ -98,25 +105,16 @@ class Service {
 
   searchBook = async (query) => {
     try {
-      const items =  20;   //num.data.num_items;
-      console.log("Items:", items);
-      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?book_title=${query}&?any_tags=[${query}]&num_items=${items}`);
+      const count = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]&count_items=true`);   //num.data.num_items;
+      const items = count.data.num_items;
+      console.log("Itemsbueno:", items);
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]&num_items=${items}`);
       // console.log(res.data, "RES SERACHBOOK");
       return res.data; 
     }catch (error) {
       console.log(error);
     }
   };
-
-  getCategories = async () =>{
-    try{
-      const res = await axios.get(`https://www.etnassoft.com/api/v1/?get_categories=all`);
-      console.log(res, "Respuesta getCategories");
-      return res.data;
-    }catch (error){
-      console.log(error)
-    }
-  }
 
 }
 

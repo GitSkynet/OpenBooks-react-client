@@ -13,6 +13,8 @@ import CreateBook from './components/CreateBook';
 import UpdatedBook from './components/UpdateBook';
 import DetailsBook from './components/DetailsBook';
 import Home from "./pages/Home";
+import MyBooks from './components/MyBooks';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
@@ -25,7 +27,8 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <AnonRoute path='/signup' component={Signup} />
             <AnonRoute path='/login' component={Login} />
-            <Route exact path='/books/:name' component={Books} />
+            <Route exact path='/books/api/v1/:name' component={Books} />
+            <Route exact path='/books/mybooks' component={MyBooks} />
             <Route exact path='/books/upload/:id' component={UpdatedBook} />
             <Route exact path='/books/create' component={CreateBook} />
             <PrivateRoute exact path="/details/:id" component={DetailsBook} />

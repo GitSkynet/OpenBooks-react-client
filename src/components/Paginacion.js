@@ -1,11 +1,11 @@
 import React from 'react'
-
+import { Button } from 'react-bootstrap';
 
 const Paginacion = props => {
     return (
         <>
-            <button onClick={props.paginaAnterior} className="primary" variant="primary" size="sm">Anterior</button>
-            <button onClick={props.paginaSiguiente} className="primary" variant="primary" size="sm">Siguiente</button>
+            <Button onClick={props.paginaAnterior} className="primary" variant="primary" size="sm">Anterior</Button>
+            <Button onClick={props.paginaSiguiente} className="primary" variant="primary" size="sm">Siguiente</Button>
         </>
     )
 }

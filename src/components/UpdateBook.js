@@ -10,23 +10,7 @@ class UpdatedBook extends Component {
     poster: ""
   }
 
-  // getDetailsBook = () => {
-  //   const id = this.props.match.params.id
-  //   console.log(id, 'IDDDDDDDDDDDDD')
-  //   axios.get(`https://www.etnassoft.com/api/v1/get/?id=${id}`).then(response =>{
-  //     console.log(response.data, "RESPONSE.DATAAAAA")
-  //   const book = response.data[0]    
-  //   this.setState({
-  //     book_title: book.title,
-  //     description: book.content,
-  //     book_year: book.publisher_date,
-  //     writer: book.author,
-  //     poster: book.cover
-  //   })
-  //       console.log(this.state.book_title, "state bookkksssss")
-  //   })
-  // }
-  getDetailsBook2 = async () => {
+  getDetailsBook = async () => {
     let res = await service.getDetailsBook(this.props.match.params.id);
     this.setState({
       book_title: res.book_title,
@@ -54,32 +38,13 @@ class UpdatedBook extends Component {
   };
 
   componentDidMount = () => {
-    this.getDetailsBook2();
+    this.getDetailsBook();
   }
 
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
-
-  // handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const {id} = this.props.match.params.id
-  //   console.log(id, "ID ACTUALIZAR?¿?¿?¿?")
-  //   try {
-  //     await axios.post(`https://www.etnassoft.com/api/v1/get/?id=${id}`);
-  //     this.setState({
-  //       book_title: "",
-  //       // boook_year: "",
-  //       // description: "",
-  //       // writer: "",
-  //       // poster: ""
-  //     });
-  //     // this.props.history.goBack();
-  //   } catch (error) {
-  //     console.log("Error while adding the movie: ", error);
-  //   }
-  // };
   
   handleSubmit = async (e) => {
     e.preventDefault();
