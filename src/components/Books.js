@@ -7,7 +7,8 @@ class Books extends Component {
     state = {
         books: [],
         pagina: 0,
-        category: []
+        category: [],
+        count: ""
     }
 
     scroll = () => {
@@ -19,21 +20,15 @@ class Books extends Component {
         const name = this.props.match.params.name;
         const page = this.state.pagina;
         const allBooks = await service.getBooksFromApi(page, name)
-        console.log(allBooks, "ALLBOOKS?")
         this.setState({ books: allBooks })
-    }
-
-    deleteBook = async (id) => {
-        await service.deleteBook(id);
-        // console.log('Console. log funcion delete');
-        this.getAllBooks();
     }
 
     paginaAnterior = () => {
         let pagina = this.state.pagina
+        let count = this.state.books.length
         if (pagina === 0) return null;
         pagina--;
-        this.setState({ pagina: pagina });
+        this.setState({ pagina: pagina});
         this.scroll();
     }
 
@@ -41,7 +36,7 @@ class Books extends Component {
         let pagina = this.state.pagina;
         let count = this.state.books.length
         if (!count) {
-            this.setState({ pagina: 0 });
+            this.setState({ pagina: 0});
         }else{
             pagina++;
             this.setState({ pagina: pagina });
@@ -58,14 +53,13 @@ class Books extends Component {
     }
 
     render() {
-        const changer = this.state.books.length;
         return (
             <div className="container2">
                 <div className="create-div">
                     <h1>{this.props.match.params.name}</h1>
                     <button><a href="/books/create" className="material-icons">Create book</a></button>
                 </div>
-                {!changer ? (
+                {this.state.books.length === 0 ? (
                 <>
                     <div className="no-results">
                         <div className="no-results-content">

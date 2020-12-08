@@ -6,9 +6,11 @@ class Private extends Component {
     return (
       <>
           <div className="profile-section1">
+              <div className="profile-content">
               <h1>Welcome {this.props.user.username}</h1>
+                <img src="https://res.cloudinary.com/ytyt/image/upload/v1607428195/books/undraw_profile_details_f8b7_wlebzl.svg" alt="profile"/>
+              </div>
               {/* seccion con imagen redonda, fondo y nombre */}
-              <img src="https://www.modico-honduras.com/wp-content/uploads/2018/03/user.png" alt="profile"/>
           </div>
           <div>
             {/* detalles del perfil */}

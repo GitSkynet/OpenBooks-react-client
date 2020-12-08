@@ -17,6 +17,7 @@ class Home extends Component {
   getCategories = async () => {
     const res = await service.getCategoriesFromApi()
     this.setState({ categories: res });
+    console.log(this.state.categories, "CATEGORIAS")
   }
 
   getCarrousel = async () => {

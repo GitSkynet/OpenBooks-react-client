@@ -17,12 +17,22 @@ class Service {
     }
   }
 
+  // getBooksFromApi = async (pagina = 0, name) => {
+  //   try {
+  //     const res = await this.service.get(`/books/api/v1/${name}?page=${pagina}`);
+  //     console.log(res, "Client service getBooksFromApi?¿?")
+  //     return res
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
   getBooksFromApi = async (pagina, name) => {
     try {
       const page = (pagina*10);
-      const count = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&count_items=true`);
-      const items = count.data.num_items;
-      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&num_items=${items}&results_range=${page},10`);
+      // const count = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&count_items=true`);
+      // const items = count.data.num_items;
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&results_range=${page},10`);
       return res.data
     } catch (error) {
       console.log(error)

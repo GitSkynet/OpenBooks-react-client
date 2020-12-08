@@ -38,7 +38,7 @@ class MyBooks extends Component {
         let count = this.state.books.length;
         if (!count) {
             this.setState({ pagina: 0 });
-        } else {
+        }else{
             pagina++;
             this.setState({ pagina: pagina });
         }
