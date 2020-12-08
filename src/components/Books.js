@@ -8,7 +8,7 @@ class Books extends Component {
         books: [],
         pagina: 0,
         category: [],
-        count: ""
+        count: "",
     }
 
     scroll = () => {
@@ -25,7 +25,6 @@ class Books extends Component {
 
     paginaAnterior = () => {
         let pagina = this.state.pagina
-        let count = this.state.books.length
         if (pagina === 0) return null;
         pagina--;
         this.setState({ pagina: pagina});
@@ -53,13 +52,13 @@ class Books extends Component {
     }
 
     render() {
+        const length = this.state.books.length;
         return (
             <div className="container2">
                 <div className="create-div">
-                    <h1>{this.props.match.params.name}</h1>
                     <button><a href="/books/create" className="material-icons">Create book</a></button>
                 </div>
-                {this.state.books.length === 0 ? (
+                {!length ? (
                 <>
                     <div className="no-results">
                         <div className="no-results-content">

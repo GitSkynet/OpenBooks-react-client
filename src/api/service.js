@@ -114,11 +114,7 @@ class Service {
 
   searchBook = async (query) => {
     try {
-      const count = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]&count_items=true`);   //num.data.num_items;
-      const items = count.data.num_items;
-      console.log("Itemsbueno:", items);
-      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]&num_items=${items}`);
-      // console.log(res.data, "RES SERACHBOOK");
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]&num_items=20`);
       return res.data; 
     }catch (error) {
       console.log(error);
@@ -128,5 +124,4 @@ class Service {
 }
 
 const axiosRequestFunctions = new Service();
-
 export default axiosRequestFunctions;

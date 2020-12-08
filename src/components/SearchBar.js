@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class SearchBar extends Component {
     
     handleChange = (event) =>{
-        let {value} = event.target
+        let {value} = event.target 
         if(value){
             this.props.filterSearch(value)
         }else{
@@ -14,7 +14,7 @@ class SearchBar extends Component {
     render(){
         return (
         <div className="search-div">
-            <input type="text" name="name" onChange={(e) => this.handleChange(e)} placeholder="Search over the OpenLibra API..."></input>
+            <input type="text" name="name" onChange={(e) => this.handleChange(e)} placeholder={"Search over the OpenLibra API..."}></input>
         </div>
     )
     }
