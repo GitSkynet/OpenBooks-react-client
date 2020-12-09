@@ -19,9 +19,8 @@ class Service {
 
   // getBooksFromApi = async (pagina = 0, name) => {
   //   try {
-  //     const res = await this.service.get(`/books/api/v1/${name}?page=${pagina}`);
-  //     console.log(res, "Client service getBooksFromApi?¿?")
-  //     return res
+  //     const res = await this.service.get(`/books/api/v1/${name}`);
+  //     return res;
   //   } catch (error) {
   //     console.log(error)
   //   }
@@ -30,8 +29,6 @@ class Service {
   getBooksFromApi = async (pagina, name) => {
     try {
       const page = (pagina*10);
-      // const count = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&count_items=true`);
-      // const items = count.data.num_items;
       const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&results_range=${page},10`);
       return res.data
     } catch (error) {
@@ -67,6 +64,16 @@ class Service {
     }
   };
 
+  updateBook = async ( id, {updatedBook}) => {
+    console.log("The book updated is: ", updatedBook);
+    try {
+      const res = await this.service.post("/books/upload/" + id, {updatedBook});
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // DETAIL ROUTE
 
   getDetailsBook = async (id) => {
@@ -82,20 +89,8 @@ class Service {
   // UPDATE ROUTES
   handleUpload = async (theFile) => {
     console.log("file in service: ", theFile);
-
     try {
       const res = await this.service.post("/books/upload", theFile);
-      return res.data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  updateBook = async ( id, updatedBook) => {
-    console.log("The book updated is: ", updatedBook);
-
-    try {
-      const res = await this.service.post("/books/upload/" + id, {updatedBook});
       return res.data;
     } catch (error) {
       console.log(error);
@@ -113,8 +108,9 @@ class Service {
   };
 
   searchBook = async (query) => {
+    const items = 10;
     try {
-      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]&num_items=20`);
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]&num_items=${items}`);
       return res.data; 
     }catch (error) {
       console.log(error);

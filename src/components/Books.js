@@ -8,7 +8,6 @@ class Books extends Component {
         books: [],
         pagina: 0,
         category: [],
-        count: "",
     }
 
     scroll = () => {
@@ -33,12 +32,12 @@ class Books extends Component {
 
     paginaSiguiente = () => {
         let pagina = this.state.pagina;
-        let count = this.state.books.length
+        let count = this.state.books.length;
         if (!count) {
             this.setState({ pagina: 0});
         }else{
             pagina++;
-            this.setState({ pagina: pagina });
+            this.setState({ pagina: pagina});
         }
         this.scroll();
     }
@@ -52,13 +51,12 @@ class Books extends Component {
     }
 
     render() {
-        const length = this.state.books.length;
         return (
             <div className="container2">
                 <div className="create-div">
                     <button><a href="/books/create" className="material-icons">Create book</a></button>
                 </div>
-                {!length ? (
+                {!this.state.books.length ? (
                 <>
                     <div className="no-results">
                         <div className="no-results-content">
@@ -83,6 +81,7 @@ class Books extends Component {
                                 <h3>{book.title}</h3>
                                 <h5>{book.author}</h5>
                                 <div className="align-delete">
+                                <Button href={`/details/${book.ID}`} variant="info">Info</Button>
                                     <Button href={`/details/${book.ID}`} className="primary" variant="primary" size="sm">Details</Button>
                                 </div>
                             </div>

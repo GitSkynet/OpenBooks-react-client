@@ -57,7 +57,6 @@ class MyBooks extends Component {
         const changer = this.state.books.length;
         return (
             <div className="container2">
-                <h1>MY BOOKS</h1>
                 <div className="create-div">
                     <h1>Our books</h1>
                 </div>

@@ -3,7 +3,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import AuthProvider from "./lib/AuthProvider";
 import Books from "./components/Books";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./pages/Private";
@@ -15,25 +15,29 @@ import DetailsBook from './components/DetailsBook';
 import Home from "./pages/Home";
 import MyBooks from './components/MyBooks';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar2 from "./components/Navbar2";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
     return (
       <AuthProvider>
         <>
-          <Navbar />
+          <Navbar2 />
 
           <Switch>
             <Route exact path='/' component={Home} />
-            <AnonRoute path='/signup' component={Signup} />
-            <AnonRoute path='/login' component={Login} />
+            <AnonRoute exact path='/signup' component={Signup} />
+            <AnonRoute exact path='/login' component={Login} />
             <Route exact path='/books/api/v1/:name' component={Books} />
-            <Route exact path='/books/mybooks' component={MyBooks} />
+            <Route exact path='/books' component={MyBooks} />
             <Route exact path='/books/upload/:id' component={UpdatedBook} />
             <Route exact path='/books/create' component={CreateBook} />
             <PrivateRoute exact path="/details/:id" component={DetailsBook} />
             <PrivateRoute exact path='/private' component={Private} />
           </Switch>
+
+          <Footer />
         </>
       </AuthProvider>
     );

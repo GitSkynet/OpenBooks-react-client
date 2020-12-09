@@ -8,7 +8,7 @@ class Carrousel extends Component {
       <Carousel>
         <Carousel.Item>
           <img
-            style={{ height: "300px", backgroundPosition: "cover" }}
+            style={{ height: "300px", backgroundPosition: "center", backgroundSize: "cover" }}
             className="d-block w-100"
             src="https://midu.dev/images/wallpapers/una-taza-de-javascript.png"
             alt="First slide"
@@ -23,12 +23,12 @@ class Carrousel extends Component {
           <img
             style={{ height: "300px", backgroundPosition: "cover" }}
             className="d-block w-100"
-            src=""
+            src="https://blog.desafiolatam.com/wp-content/uploads/2019/04/react-galaxia.png"
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>titulo2</h3>
-            <p><a href={`/details/javascirpt`}>Nulla vitae elit libero, a pharetra augue mollis interdum.</a></p>
+            <h3>Desarrollo Web</h3>
+            <p><a href="/books/api/v1/desarrollo_web">Muestra todos nuestros recursos sobre web!</a></p>
           </Carousel.Caption>
         </Carousel.Item>
 

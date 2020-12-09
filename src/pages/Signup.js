@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+import { Button } from 'react-bootstrap';
 
 class Signup extends Component {
   state = { username: "", password: "" };
@@ -20,32 +20,33 @@ class Signup extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div>
-        <h1>Sign Up</h1>
-
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input
-            type='text'
-            name='username'
-            value={username}
-            onChange={this.handleChange}
-          />
-
-          <label>Password:</label>
-          <input
-            type='password'
-            name='password'
-            value={password}
-            onChange={this.handleChange}
-          />
-
-          <input type='submit' value='Signup' />
-        </form>
-
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
-      </div>
+      <div className="container">
+        <div className="img">
+          <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/82b8d8efd3b0ac6382b9d0d71a99c6cf9dcefa23/img/bg.svg" alt="Profile"/>
+        </div>
+        <div className="login-content">
+          <form action="index.html" onSubmit={this.handleFormSubmit}>
+            <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/82b8d8efd3b0ac6382b9d0d71a99c6cf9dcefa23/img/avatar.svg" alt="Profile"/>
+              <h2 className="title">SIGN UP</h2>
+              <div className="input-div one">
+                <div className="i">
+                </div>
+                <div className="div">
+                  <input type="text" className="input" name="username" value={username} onChange={this.handleChange} placeholder="Username" />
+                </div>
+              </div>
+              <div className="input-div pass">
+                <div className="i">
+                </div>
+                <div className="div">
+                  <input type="password" className="input" name="password" value={password} onChange={this.handleChange} placeholder="Password" />
+                </div>
+              </div>
+              <a href="/login">Already have an account? Log In!!</a>
+              <Button type="submit" className=".btn-login" value="SIGN UP">Log in!</Button>
+            </form>
+            </div>
+          </div>
     );
   }
 }

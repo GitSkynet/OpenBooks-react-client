@@ -28,10 +28,11 @@ class UpdatedBook extends Component {
     const uploadData = new FormData();
     // poster (este nombre tiene que ser igual que en el modelo, ya que usaremos req.body como argumento del método .create() cuando creemos una nueva movie en la ruta POST '/api/movies/create')
     uploadData.append("poster", e.target.files[0]);
-
+    console.log(uploadData)
     try {
       const res = await service.handleUpload(uploadData);
       this.setState({ poster: res.secure_url });
+      console.log(res.secure_url, "SECURE_URL")
     } catch (error) {
       console.log("Error while uploading the file: ", error);
     }
@@ -57,7 +58,6 @@ class UpdatedBook extends Component {
         writer: "",
         poster: ""
       });
-      this.props.history.goBack();
     } catch (error) {
       console.log("Error while adding the movie: ", error);
     }

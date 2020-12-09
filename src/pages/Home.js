@@ -10,7 +10,8 @@ class Home extends Component {
     filteredBooks: [],
     categories: [],
     books: [],
-    pagina: ""
+    pagina: "",
+    campo: ""
   }
 
   //Get Categories Function
@@ -29,14 +30,14 @@ class Home extends Component {
     const searchedTerm = searchTerm.toLowerCase();
     const filteredList = await service.searchBook(searchedTerm);
     if (searchTerm) {
-      this.setState({ filteredBooks: filteredList});
-    };
+      this.setState({ filteredBooks: filteredList, campo: searchedTerm });
+    }
   }
 
   clearSearch = () => {
-    this.setState({ filtredBooks: [] })
+    this.setState({ filtredBooks: [] });
   }
-
+  
   componentDidMount() {
     this.getCategories();
     this.getCarrousel();
@@ -44,21 +45,41 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <div className="home-section">
-          <h1>OPENBOOKS V2</h1>
           <SearchBar
             filterSearch={this.filterSearch}
             clearSearch={this.clearSearch}
-            count={this.state.filteredBooks.length}
+            campo={this.state.campo}
+            results={this.state.filteredBooks.length}
           />
         </div>
+        <div className="home-section2">
           <div className="search-section">
           {this.state.filteredBooks.map((oneBook, index) => {
-              return <SearchResult key={index} theBook={oneBook} />
-              
-            })}
-          </div>
+            return <SearchResult key={index} theBook={oneBook} />
+          })} 
+          </div>  
+					<div>
+						<h3>Join today!</h3>
+						<p>Get access to find any resource on programming, databases,
+              web development, JavaScipt, C, C ++ ...
+              +3500 books at your disposal to read online or
+              download directly. Browse through our sections,
+              find what you are looking for and enjoy learning!</p>
+						<button className="link-button2" type="button"><a href="/signup">Register</a></button>
+					</div>
+					<div>
+						<ul className="home_section2_list">
+							<li>Enjoy OpenBooks allways without ads</li>
+							<li>Keep a personal book-list</li>
+							<li>Filter your books by favourite, read...explore!</li>
+							<li>Download directly or view online</li>
+							<li>Create personal lists</li>
+							<li>Contribute and improve our database</li>
+						</ul>
+					</div>
+				</div>
         <Carrousel />
         <div className="home-section">
           <h1>Categories!</h1>
@@ -75,7 +96,7 @@ class Home extends Component {
             )
           })}
         </div>
-      </div>
+      </>
     )
   }
 }

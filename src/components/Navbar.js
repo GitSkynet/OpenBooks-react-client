@@ -16,10 +16,9 @@ class Navbar extends Component {
             isLoggedin ? 
               (<>
               <li><a href="/popular">Most Popular</a></li>
-              <li><a href="/books">All books</a></li>
-              <li><a href="/books/mybooks">MY personal books</a></li>
+              <li><a href="/books/">MY personal books</a></li>
               <li><a href="/private">My profile</a></li>
-              <li><button className="link-button" type="button" onClick={logout}>Logout</button ></li>
+              <li><a onClick={logout}>Logout</a></li>
               </>) :
               (
                 <>

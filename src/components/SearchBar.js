@@ -1,24 +1,23 @@
 import React, { Component } from 'react'
 
 class SearchBar extends Component {
-    
-    handleChange = (event) =>{
-        let {value} = event.target 
-        if(value){
+
+    handleChange = (event) => {
+        let { value } = event.target
+        if (value) {
             this.props.filterSearch(value)
-        }else{
+        } else {
             this.props.clearSearch()
         }
     }
-
-    render(){
+    
+    render() {
         return (
-        <div className="search-div">
-            <input type="text" name="name" onChange={(e) => this.handleChange(e)} placeholder={"Search over the OpenLibra API..."}></input>
-        </div>
-    )
+            <div className="search-div">
+                <input type="text" name="name" onChange={(e) => this.handleChange(e)} placeholder={"Search over the OpenLibra API..."}></input>
+            </div>
+        )
     }
 }
-
 
 export default SearchBar;

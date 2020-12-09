@@ -5,12 +5,9 @@ class searchResult extends Component {
         const theBook = this.props.theBook;
         return (
             <div className="align-random">
-                <a href={`/details/${theBook.ID}`}>
-                    <div className="cover-movie" style={{backgroundImage: `url(${theBook.cover})`, backgroundPosition: "cover", backgroundSize: "100%"}}>
-                    {/* <h3>{theBook.title}</h3>
-                    <p>{theBook.description}</p> */}
-                    </div>
-                </a>  
+                <div className="cover-movie" style={{backgroundImage: `url(${theBook.cover})`, backgroundPosition: "center", backgroundSize: "cover"}}>
+                    <a href={`/details/${theBook.ID}`}><h5>{theBook.title}</h5></a>  
+                </div>
             </div>
         )
     }
