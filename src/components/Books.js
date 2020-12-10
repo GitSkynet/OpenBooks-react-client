@@ -15,10 +15,16 @@ class Books extends Component {
         element.scrollIntoView('ease-in', 'start');
     }
 
+    getCategories = async () => {
+        const allCategories = await service.getCategoriesFromApi();
+        console.log(allCategories, "CATEGORIES STATE")
+        this.setState({category: allCategories})
+    }
+
     getAllBooks = async () => {
         const name = this.props.match.params.name;
-        const page = this.state.pagina;
-        const allBooks = await service.getBooksFromApi(page, name)
+        const pagina = this.state.pagina;
+        const allBooks = await service.getBooksFromApi(name, pagina)
         this.setState({ books: allBooks })
     }
 
@@ -42,18 +48,21 @@ class Books extends Component {
         this.scroll();
     }
 
+    componentDidMount() {
+        this.getAllBooks();
+        this.getCategories();
+    }
+
     componentDidUpdate = () => {
         this.getAllBooks();
     }
 
-    componentDidMount() {
-        this.getAllBooks();
-    }
 
     render() {
         return (
             <div className="container2">
                 <div className="create-div">
+                    
                     <button><a href="/books/create" className="material-icons">Create book</a></button>
                 </div>
                 {!this.state.books.length ? (

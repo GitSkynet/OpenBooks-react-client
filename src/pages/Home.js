@@ -3,6 +3,7 @@ import service from '../api/service';
 import SearchBar from "../components/SearchBar";
 import SearchResult from "../components/SearchResult";
 import Carrousel from '../components/Carrousel';
+import { Button } from 'react-bootstrap';
 
 class Home extends Component {
 
@@ -47,27 +48,29 @@ class Home extends Component {
     return (
       <>
         <div className="home-section">
-          <SearchBar
-            filterSearch={this.filterSearch}
-            clearSearch={this.clearSearch}
-            campo={this.state.campo}
-            results={this.state.filteredBooks.length}
+          <div>
+            <SearchBar
+              filterSearch={this.filterSearch}
+              clearSearch={this.clearSearch}
+              campo={this.state.campo}
+              results={this.state.filteredBooks.length}
           />
-        </div>
-        <div className="home-section2">
+          </div>
           <div className="search-section">
           {this.state.filteredBooks.map((oneBook, index) => {
             return <SearchResult key={index} theBook={oneBook} />
           })} 
-          </div>  
-					<div>
+          </div>
+        </div>
+				<div className="home-section2">
+          <div>
 						<h3>Join today!</h3>
 						<p>Get access to find any resource on programming, databases,
               web development, JavaScipt, C, C ++ ...
               +3500 books at your disposal to read online or
               download directly. Browse through our sections,
               find what you are looking for and enjoy learning!</p>
-						<button className="link-button2" type="button"><a href="/signup">Register</a></button>
+						<Button href="/signup" className="primary" variant="primary" size="sm" active>Register</Button>
 					</div>
 					<div>
 						<ul className="home_section2_list">
@@ -91,7 +94,7 @@ class Home extends Component {
               <div key={index} className="card-categories" style={{ backgroundImage: `url(${this.state.books.cover})` }}>
                 <img src={this.state.books.cover} alt={this.state.books.title} />
                 <h3>{oneCategory.name}</h3>
-                <a href={`/books/api/v1/${oneCategory.nicename}`}>Go!</a>
+                <a href={`/books/api/v1/${oneCategory.nicename}`}>{oneCategory.name}</a>
               </div>
             )
           })}
