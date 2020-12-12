@@ -17,6 +17,7 @@ import MyBooks from './components/MyBooks';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar2 from "./components/Navbar2";
 import Footer from "./components/Footer";
+import GoogleBooks from "./components/GoogleBooks";
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
             <AnonRoute exact path='/login' component={Login} />
             <Route exact path='/books/api/v1/:name' component={Books} />
             <Route exact path='/books' component={MyBooks} />
+            <Route exact path='/books/google-books' component={GoogleBooks} />
             <Route exact path='/books/upload/:id' component={UpdatedBook} />
             <Route exact path='/books/create' component={CreateBook} />
             <PrivateRoute exact path="/details/:id" component={DetailsBook} />

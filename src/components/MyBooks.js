@@ -16,8 +16,8 @@ class MyBooks extends Component {
 
     getAllBooks = async () => {
         const page = this.state.pagina;
-        const allBooks = await service.getBooks(page)
-        this.setState({ books: allBooks.data })
+        const allBooks = await service.getBooks(page);
+        this.setState({ books: allBooks })
     }
 
     deleteBook = async (id) => {
@@ -54,13 +54,12 @@ class MyBooks extends Component {
     }
 
     render() {
-        const changer = this.state.books.length;
         return (
             <div className="container2">
                 <div className="create-div">
                     <h1>Our books</h1>
                 </div>
-                {!changer ? (
+                {!this.state.books.length ? (
                     <>
                         <div className="no-results">
                             <div className="no-results-content">
@@ -84,10 +83,10 @@ class MyBooks extends Component {
                             { this.state.books.map((book) => {
                                 return (
                                     <div key={book._id} className="card">
-                                        <img src={book.poster} alt={book.book_title} />
+                                        <img src={book.poster} alt={book.title} />
                                         <div>
-                                            <h3>{book.book_title}</h3>
-                                            <h5>{book.book_year}</h5>
+                                            <h3>{book.title}</h3>
+                                            <h5>{book.year}</h5>
                                             <div className="align-delete">
                                                 <a href={`/details/${book._id}`}>Details</a>
                                                 <Button onClick={() => this.deleteBook(book._id)} className="primary" variant="primary" size="sm" active>Delete</Button>

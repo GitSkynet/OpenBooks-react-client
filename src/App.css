@@ -248,6 +248,26 @@ a:hover{
 	align-content: flex-start;
 }
 
+.google-div{
+	padding: 40px;
+	width: 100%;
+	height: 200px;
+	background-color: #1158a0;
+	color: white;
+	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.google-div img{
+	margin: 0 20px;
+	width: 60px;
+	height: 60px;
+}
+
 .edit-form{
 	width: 100%;
 	display: flex;
@@ -262,17 +282,45 @@ a:hover{
 	padding: 10px;
 }
 
+/* Books cards */
 .card{
-	width: 280px;
+	width: 180px;
+	height: 250px;
 	border: 1px solid black;
 	border-radius: 10px;
 	margin: 10px auto;
 }
 
-.card img{
+.card-body{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: center;
 	width: 100%;
-	height: 400px;
+	padding: 2px;
+	background-color: rgba(221, 206, 206, 0.205);
+	color: rgb(255, 255, 255);
+	opacity: 0;
+	text-align: center;
+	overflow:hidden;
+	white-space:wrap;
+	text-overflow: ellipsis;
 }
+
+.card-body:hover{
+	width: 100%;
+	background-color: rgba(88, 84, 84, 0.493);
+	opacity: 1;
+}
+
+.card-body h5{
+	width: 90%;
+	overflow:hidden;
+	white-space: wrap;
+	text-overflow: ellipsis;
+}
+
 
 .card2{
 	max-width: 100%;
@@ -280,6 +328,8 @@ a:hover{
 	border-radius: 10px;
 	margin: 10px auto;
 }
+
+/* End books cards */
 
 .img-div{
 	width: 100%;
@@ -304,14 +354,14 @@ a:hover{
 }
 
 .card-categories{
-	width: 500px;
-	height: 130px;
+	width: 150px;
+	height: 70px;
 	margin: 10px;
 	padding: 10px;
-	border: 1px solid red;
-	border-radius: 10px;
-	background-color: #545458;
+	border-radius: 5px;
+	background-color: #8c0fa5;
 	color: white;
+	text-emphasis-color: white;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -321,20 +371,19 @@ a:hover{
 }
 
 .card-categories:hover{
-	width: 520px;
-	height: 140px;
+	width: 152px;
+	height: 72px;
 	margin: 10px;
 	padding: 10px;
 	animation: hover 4 0 1 1 top fill-in;
-	border: 1px solid red;
 	border-radius: 10px;
-	background-color: #545458;
+	background-color: #8c0fa5;
 	color: white;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	transform:scale(0.8);
+	transform:scale(1);
 }
 
 .card-categories h3{
@@ -347,8 +396,10 @@ a:hover{
 .create-div{
 	width: 100%;
 	height: 200px;
-	background-image: url('https://i2r9x7i6.stackpathcdn.com/app/uploads/2019/09/The-Best-New-Books-to-Add-to-Your-September-Reading-List.jpg');
+	background-image: url("https://raw.githubusercontent.com/GitSkynet/OpenBooks/master/img/libros.jpg");
+	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 	background-position: center;
+	background-size: cover;
 	background-repeat: no-repeat;
 	background-size: cover;
 	display: flex;
@@ -361,6 +412,9 @@ a:hover{
 .create-div h1{
 	text-transform: capitalize;
 	height: 40px;
+	color: white;
+	font-weight: 700;
+	font-size: large;
 }
 
 .align-delete{
@@ -398,15 +452,51 @@ a:hover{
 /* HOME */
 
 .home-section{
+	color: white;
 	width: 100%;
+	height: 300px;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	background-position: center;
+	background-size: cover;
+	box-shadow: 0 0 10px rgba(-100, -100, -100, 10.7);
+	background-image: url('https://image.tmdb.org/t/p/w1920_and_h800_multi_faces_filter(duotone,190235,ad47dd)/lMnoYqPIAVL0YaLP5YjRy7iwaYv.jpg');
+	padding: 10px;
+}
+
+.home-section2{
+	color: white;
+	width: 100%;
+	height: 300px;
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	background-position: center;
+	background-size: cover;
+	box-shadow: 0 0 10px rgba(-100, -100, -100, 10.7);
+	background-image: url('https://image.tmdb.org/t/p/w1920_and_h800_multi_faces_filter(duotone,190235,ad47dd)/lMnoYqPIAVL0YaLP5YjRy7iwaYv.jpg');
+	padding: 10px;
+}
+
+.search-input-section{
+	width: 100%;
+	height: 300px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
+	justify-content: center;
 	align-content: stretch;
+	background-image: url("https://raw.githubusercontent.com/GitSkynet/OpenBooks/master/img/libros.jpg");
+	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+}
+
+.input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: auto;
 }
 
 .home-panel{
@@ -431,6 +521,15 @@ a:hover{
 	align-content: stretch;
 }
 
+.search-section h5{
+	padding: 10px;
+	border-top: 1px solid #292c2f;
+	border-bottom: 1px solid #292c2f;
+	margin: 5px 20px;
+	text-align: center;
+	font-weight: 200;
+}
+
 .search-div{
 	width: 100%;
 	padding: 10px;
@@ -439,22 +538,8 @@ a:hover{
 	display: flex;
 }
 
-.search-div input{
+.search-input-section .search-div input{
 	width: 100%;
-}
-
-.home-section2{
-	color: white;
-	width: 100%;
-	height: 300px;
-	display: flex;
-	text-align: center;
-	flex-direction: column;
-	background-position: center;
-	background-size: cover;
-	box-shadow: 0 0 10px rgba(-100, -100, -100, 10.7);
-	background-image: url('https://image.tmdb.org/t/p/w1920_and_h800_multi_faces_filter(duotone,190235,ad47dd)/lMnoYqPIAVL0YaLP5YjRy7iwaYv.jpg');
-	padding: 10px;
 }
 
 @media(min-width:500px){
@@ -745,6 +830,3 @@ footer {
 /* END OF CSS OF FOOTER */
 
 /* PRUEBA */
-
-
-

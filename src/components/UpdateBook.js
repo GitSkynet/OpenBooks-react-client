@@ -3,8 +3,8 @@ import service from "../api/service";
 
 class UpdatedBook extends Component {
   state = {
-    book_title: "",
-    book_year: "",
+    title: "",
+    year: "",
     description: "",
     writer: "",
     poster: ""
@@ -12,12 +12,13 @@ class UpdatedBook extends Component {
 
   getDetailsBook = async () => {
     let res = await service.getDetailsBook(this.props.match.params.id);
+    console.log(res, "respuesta")
     this.setState({
-      book_title: res.book_title,
-      book_year: res.book_year,
+      title: res.title,
+      year: res.year,
       description: res.description,
-      poster: res.poster,
-      writer: res.writer
+      writer: res.writer,
+      poster: res.poster
     })
   }
 
@@ -52,18 +53,20 @@ class UpdatedBook extends Component {
     try {
       await service.updateBook(this.state, this.props.match.params.id);
       this.setState({
-        book_title: "",
-        boook_year: "",
+        title: "",
+        year: "",
         description: "",
         writer: "",
         poster: ""
       });
+      console.log("added");
     } catch (error) {
       console.log("Error while adding the movie: ", error);
     }
   };
 
   render() {
+    console.log(this.state, "ESTADO")
     return (
       <div className="container3" style={{backgroundImage: `url(${this.state.poster})`, backgroundSize: `cover`, backgroundPosition: `center`, backgroundRepeat: `no-repeat`}}>
         <form onSubmit={(e) => this.handleSubmit(e)} className="edit-form">
@@ -72,8 +75,8 @@ class UpdatedBook extends Component {
           <input
             className="input"
             type="text"
-            name="book_title"
-            value={this.state.book_title}
+            name="title"
+            value={this.state.title}
             placeholder="Enter title book"
             onChange={(e) => this.handleChange(e)}
           />
@@ -82,8 +85,8 @@ class UpdatedBook extends Component {
           <input
             className="input"
             type="text"
-            name="book_year"
-            value={this.state.book_year}
+            name="year"
+            value={this.state.year}
             placeholder="Book year"
             onChange={(e) => this.handleChange(e)}
           />

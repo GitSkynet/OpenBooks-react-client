@@ -14,9 +14,14 @@ class DetailsBook extends Component {
         axios.get(`https://www.etnassoft.com/api/v1/get/?id=${id}`).then(response =>{
         const book = response.data[0]    
         this.setState({book: book});
-        console.log(this.state.book.url_download)
+        console.log(this.state.book)
         })
     }
+
+    // getDetailsBook = async () => {
+    //     let res = await service.getDetailsBook(this.props.match.params.id);
+    //     this.setState({ book: res })
+    // }
 
     deleteBook = async () => {
         await service.deleteBook(this.props.match.params.id);
@@ -32,7 +37,7 @@ class DetailsBook extends Component {
         return (
             <div className="card2">
                 <div className="img-div">
-                    <img src={book.cover} alt={book.title}/>
+                    <img src={book.poster} alt={book.title}/>
                 </div>
                 <div>
                     <h2>Escritor: {book.author}</h2>

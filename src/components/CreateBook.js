@@ -4,9 +4,9 @@ import service from "../api/service";
 
 class CreateBook extends Component {
     state= {
-        book_title: "",
+        title: "",
         description: "",
-        book_year: "",
+        year: "",
         writer: "",
         poster: ""
     }
@@ -40,9 +40,9 @@ class CreateBook extends Component {
           console.log("added", res);
     
           this.setState({
-            book_title: "",
+            title: "",
             description: "",
-            book_year: "",
+            year: "",
             writer: "",
             poster: ""
           });
@@ -63,8 +63,8 @@ class CreateBook extends Component {
           <input
             className="input"
             type="text"
-            name="book_title"
-            value={this.state.book_title}
+            name="title"
+            value={this.state.title}
             placeholder="Enter title book"
             onChange={(e) => this.handleChange(e)}
           />
@@ -73,8 +73,8 @@ class CreateBook extends Component {
           <input
             className="input"
             type="text"
-            name="book_year"
-            value={this.state.book_year}
+            name="year"
+            value={this.state.year}
             placeholder="Book year"
             onChange={(e) => this.handleChange(e)}
           />
