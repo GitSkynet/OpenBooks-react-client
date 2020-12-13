@@ -21,7 +21,7 @@ class Carrousel extends Component {
             alt="First slide"
           />
           <Carousel.Caption>
-            <Button href="/books/api/v1/javascript">JavaScript</Button>
+            <Button href="/books/openlibra/javascript">JavaScript</Button>
           </Carousel.Caption>
         </Carousel.Item>
         
@@ -34,7 +34,7 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>Desarrollo Web</h3>
-            <Button href="/books/api/v1/desarrollo_web">Desarrollo Web</Button>
+            <Button href="/books/openlibra/desarrollo_web">Desarrollo Web</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -47,7 +47,7 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>C programming</h3>
-            <Button href="/books/api/v1/c">Programming inC Language</Button>
+            <Button href="/books/openlibra/c">Programming inC Language</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -60,7 +60,7 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>PHP</h3>
-            <Button href={`/books/api/v1/programacion_php`}>PHP</Button>
+            <Button href={`/books/openlibra/programacion_php`}>PHP</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -73,7 +73,7 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>Algoritmos</h3>
-            <Button href={`/books/api/v1/algoritmos`}>Algorithms</Button>
+            <Button href={`/books/openlibra/algoritmos`}>Algorithms</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -86,7 +86,7 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>titulo3</h3>
-            <p><a href={`/details/javascirpt`}>Nulla vitae elit libero, a pharetra augue mollis interdum.</a></p>
+            <p><a href={`/books/openlibra/javascirpt`}>Nulla vitae elit libero, a pharetra augue mollis interdum.</a></p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

@@ -59,6 +59,17 @@ class Books extends Component {
                 <div className="create-div">
                     <h1>{this.state.name}</h1>
                 </div>
+                {!books ? (<>
+                    <div className="no-results">
+                    <div className="no-results-content">
+                        <h1>No hay más libros!!</h1>
+                        <img src="https://res.cloudinary.com/ytyt/image/upload/v1607374224/books/undraw_result_5583_nsotqq.svg" alt="No reuslts" />
+                        <div className="buttons-results">
+                            <Button onClick={() => this.paginaSiguiente()} className="primary" variant="primary" size="sm" active>Vuelve!</Button>                            </div>
+                    </div>
+                </div>
+                </>)
+                :(<>
                 {books.map((book, index) => {
                     return (
                         <div key={index} className="card" style={{ backgroundImage: `url(${book.cover})`, backgroundPosition: "center", backgroundSize: "cover" }}>
@@ -76,14 +87,7 @@ class Books extends Component {
                         paginaSiguiente={this.paginaSiguiente}
                     />
                 </div>
-                {/* <div className="no-results">
-                    <div className="no-results-content">
-                        <h1>No hay más libros!!</h1>
-                        <img src="https://res.cloudinary.com/ytyt/image/upload/v1607374224/books/undraw_result_5583_nsotqq.svg" alt="No reuslts" />
-                        <div className="buttons-results">
-                            <Button onClick={() => this.paginaSiguiente()} className="primary" variant="primary" size="sm" active>Vuelve!</Button>                            </div>
-                    </div>
-                </div> */}
+                </>)}
             </div>
         );
     }

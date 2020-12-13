@@ -15,7 +15,6 @@ class SearchBar extends Component {
     render() {
         return (
             <div className="search-div">
-                {/* <input type="text" name="name" onChange={(e) => this.handleChange(e)} placeholder={"Search over the OpenLibra API..."}></input> */}
                 <InputGroup onChange={(e) => this.handleChange(e)} type="text" name="name" className="mb-3">
                     <FormControl
                         placeholder="Search over the OpenLibra API..."

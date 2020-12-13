@@ -6,14 +6,14 @@ class Footer extends Component {
             <>
             <footer className="footer-distributed">
                 <div className="footer-left">
-                    <h3>Iron<span>Movies</span></h3>
-                    <p className="footer-company-name">José Blasco & Carlos Curtido&reg; 2020</p>
+                    <h3>OPEN<span>BOOKS</span></h3>
+                    <p className="footer-company-name">Carlos Curtido &reg; 2020</p>
                 </div>
     
                 <div className="footer-center">
                     <div>
                         <i className="fa fa-map-marker"></i>
-                        <p><span>IronHack Barcelona</span>Spain</p>
+                        <p><span>Barcelona, </span>Spain</p>
                     </div>
                     <div>
                         <i className="fa fa-phone"></i>
@@ -21,7 +21,7 @@ class Footer extends Component {
                     </div>
                     <div>
                         <i className="fa fa-envelope"></i>
-                        <p><a href="mailto:support@company.com">IronMovies@j&c.com</a></p>
+                        <p><a href="mailto:support@company.com">OpenBooks@gmail.com</a></p>
                     </div>
                 </div>
                 

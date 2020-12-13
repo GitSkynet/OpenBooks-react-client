@@ -18,6 +18,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar2 from "./components/Navbar2";
 import Footer from "./components/Footer";
 import GoogleBooks from "./components/GoogleBooks";
+import OpenLibra from "./components/OpenLibra";
 
 class App extends Component {
   render() {
@@ -29,9 +30,10 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
-            <Route exact path='/books/api/v1/:name' component={Books} />
+            <Route exact path='/books/openlibra/:name' component={Books} />
             <Route exact path='/books' component={MyBooks} />
             <Route exact path='/books/google-books' component={GoogleBooks} />
+            <Route exact path='/books/openlibra' component={OpenLibra} />
             <Route exact path='/books/upload/:id' component={UpdatedBook} />
             <Route exact path='/books/create' component={CreateBook} />
             <PrivateRoute exact path="/details/:id" component={DetailsBook} />

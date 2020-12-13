@@ -83,7 +83,7 @@ class Service {
   //GET Route
   getBooksFromApi = async ( name, pagina=0) => {
     try {
-      const res = await this.service.get(`/books/api/v1/${name}/${pagina}`);
+      const res = await this.service.get(`/books/openlibra/${name}/${pagina}`);
       return res.data;
     } catch (error) {
       console.log(error)
@@ -92,9 +92,8 @@ class Service {
 
   //Search funtion over OpenLilbra API
   searchBook = async (query) => {
-    const items = 10;
     try {
-      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]&num_items=${items}`);
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${query}&?any_tags=[${query}]`);
       return res.data; 
     }catch (error) {
       console.log(error);
@@ -131,13 +130,21 @@ class Service {
   getGoogleBooks = async ( name, pagina=0) => {
     try {
       const res = await this.service.get(`/books/google-books`);
-      console.log(res, "RES GOOGLE BOOKS CLIENT SERVICE.JS")
       return res.data;
     } catch (error) {
       console.log(error)
     }
   }
 
+  searchGoogle = async (query) => {
+    try {
+      const res = await this.service.get(`/books/google-books/search/${query}`)
+      console.log(res, "cliente respuesta")
+      return res; 
+    }catch (error) {
+      console.log(error);
+    }
+  };
 
   ////////////////////////////END BOOKS FROM GOOGLEBOOKS API/////////////////////////////////
   //<<<<<<<<<<<<<<<<<<<<<<<<<<<----------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
