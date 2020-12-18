@@ -38,7 +38,7 @@ class MyBooks extends Component {
         let count = this.state.books.length;
         if (!count) {
             this.setState({ pagina: 0 });
-        }else{
+        } else {
             pagina++;
             this.setState({ pagina: pagina });
         }
@@ -59,9 +59,36 @@ class MyBooks extends Component {
                 <div className="create-div">
                     <h1>Our books</h1>
                 </div>
-                {!this.state.books.length ? (
-                    <>
-                        <div className="no-results">
+                <div className="pagination">
+                    <Paginacion
+                        paginaAnterior={this.paginaAnterior}
+                        paginaSiguiente={this.paginaSiguiente}
+                    />
+                </div>
+                {this.state.books?.map((book) => {
+                    return (
+                        <div key={book._id} className="card">
+                            <img src={book.poster} alt={book.title} />
+                            <div>
+                                <h3>{book.title}</h3>
+                                <h5>{book.year}</h5>
+                                <div className="align-delete">
+                                    <a href={`/details/${book._id}`}>Details</a>
+                                    <Button onClick={() => this.deleteBook(book._id)} className="primary" variant="primary" size="sm" active>Delete</Button>
+                                    <a href={`/books/upload/${book._id}`} className="material-icons">Edit Book</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })},
+                <div className="pagination">
+                    <Paginacion
+                        paginaAnterior={this.paginaAnterior}
+                        paginaSiguiente={this.paginaSiguiente}
+                    />
+                </div>
+                {/* <div className="no-results">
                             <div className="no-results-content">
                                 <h1>No hay más libros!!</h1>
                                 <img src="https://res.cloudinary.com/ytyt/image/upload/v1607374224/books/undraw_result_5583_nsotqq.svg" alt="No reuslts"/>
@@ -70,41 +97,8 @@ class MyBooks extends Component {
                                     <Button href="/books/create" className="primary" variant="primary" size="sm" active>Añade libro</Button>
                                 </div>
                             </div>
-                        </div>
-                    </>)
-                    : (
-                        <>
-                            <div className="pagination">
-                                <Paginacion
-                                    paginaAnterior={this.paginaAnterior}
-                                    paginaSiguiente={this.paginaSiguiente}
-                                />
-                            </div>
-                            { this.state.books.map((book) => {
-                                return (
-                                    <div key={book._id} className="card">
-                                        <img src={book.poster} alt={book.title} />
-                                        <div>
-                                            <h3>{book.title}</h3>
-                                            <h5>{book.year}</h5>
-                                            <div className="align-delete">
-                                                <a href={`/details/${book._id}`}>Details</a>
-                                                <Button onClick={() => this.deleteBook(book._id)} className="primary" variant="primary" size="sm" active>Delete</Button>
-                                                <a href={`/books/upload/${book._id}`} className="material-icons">Edit Book</a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })},
-                            <div className="pagination">
-                                <Paginacion
-                                    paginaAnterior={this.paginaAnterior}
-                                    paginaSiguiente={this.paginaSiguiente}
-                                />
-                            </div>
-                        </>)
-                }
+                        </div> */}
+                
             </div>
         );
     }

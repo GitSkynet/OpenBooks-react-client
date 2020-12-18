@@ -33,8 +33,8 @@ class Books extends Component {
 
     paginaSiguiente = () => {
         let pagina = this.state.pagina;
-        let count = this.state.books.length;
-        if (count) {
+        let books = this.state.books;
+        if (books) {
             pagina++;
             this.setState({ pagina: pagina });
         } else {
@@ -51,6 +51,10 @@ class Books extends Component {
         this.getAllBooks();
     }
 
+    componentWillUnmount = () => {
+        this.getAllBooks();
+    }
+
 
     render() {
         const books = this.state.books;
@@ -59,18 +63,7 @@ class Books extends Component {
                 <div className="create-div">
                     <h1>{this.state.name}</h1>
                 </div>
-                {!books ? (<>
-                    <div className="no-results">
-                    <div className="no-results-content">
-                        <h1>No hay más libros!!</h1>
-                        <img src="https://res.cloudinary.com/ytyt/image/upload/v1607374224/books/undraw_result_5583_nsotqq.svg" alt="No reuslts" />
-                        <div className="buttons-results">
-                            <Button onClick={() => this.paginaSiguiente()} className="primary" variant="primary" size="sm" active>Vuelve!</Button>                            </div>
-                    </div>
-                </div>
-                </>)
-                :(<>
-                {books.map((book, index) => {
+                {books?.map((book, index) => {
                     return (
                         <div key={index} className="card" style={{ backgroundImage: `url(${book.cover})`, backgroundPosition: "center", backgroundSize: "cover" }}>
                             <div className="card-body">
@@ -87,7 +80,14 @@ class Books extends Component {
                         paginaSiguiente={this.paginaSiguiente}
                     />
                 </div>
-                </>)}
+                {/* <div className="no-results">
+                    <div className="no-results-content">
+                        <h1>No hay más libros!!</h1>
+                        <img src="https://res.cloudinary.com/ytyt/image/upload/v1607374224/books/undraw_result_5583_nsotqq.svg" alt="No reuslts" />
+                        <div className="buttons-results">
+                            <Button onClick={() => this.paginaSiguiente()} className="primary" variant="primary" size="sm" active>Vuelve!</Button>                            </div>
+                    </div>
+                </div> */}
             </div>
         );
     }

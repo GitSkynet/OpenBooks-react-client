@@ -1,44 +1,54 @@
 import React, { Component } from 'react';
-import service from '../api/service';
-import Carrousel from '../components/Carrousel';
 import { Button } from 'react-bootstrap';
 
 class Home extends Component {
-
   state = {
-    categories: [],
     books: [],
-  }
-
-  //Get Categories Function
-  getCategories = async () => {
-    const res = await service.getCategoriesFromApi()
-    this.setState({ categories: res });
-  }
-
-  getCarrousel = async () => {
-    const res = await service.getCarrousel();
-    this.setState({ books: res });
-    console.log(this.state.books, "Books home, carrousel")
   }
 
   render() {
     return (
       <div>
-        <Carrousel />
-        <div className="home-section">
-          <h1>Categories!</h1>
-          <h2>Discover all the categories on our Web!</h2>
+        <div className="js-div">
+            <div className="js-container">
+              <h2>Learn JavaScript with our resources</h2>
+              <p>Books to learn JavaScript thanks to OpenLibra. Enjoy and learning with us!</p>
+            </div>
+            <div className="js-container">
+              <img src="https://ayudawp.com/wp-content/uploads/2017/01/javascript-logo-escudo.png" alt="book javascript"/>
+              <Button href="/books/openlibra/javascript">Go to section!</Button>
+            </div>
         </div>
-        <div className="container-categories">
-          {this.state.categories.map((oneCategory, index = this.state.categories.ID) => {
-            return (
-              <div key={index} className="card-categories">
-                <img src={this.state.books.cover} alt={this.state.books.title} />
-                <a href={`/books/api/v1/${oneCategory.nicename}`}><h6>{oneCategory.name}</h6></a>
+        <div className="web-section">
+            <div className="web-container">
+              <h2>Learn Web Development</h2>
+              <p>Books about stuff of web development</p>
+              <Button href="/books/openlibra/desarrollo_web">Go to section!</Button>
+            </div>
+        </div>
+        <div className="cl-div">
+            <div className="cl-container">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png" alt="book javascript"/>
+              <div className="cl-buttons">
+                <Button href="/books/openlibra/c">C</Button>
+                <Button href="/books/openlibra/c-plus-plus">C++</Button>
+                <Button href="/books/openlibra/c-sharp">C#</Button>
               </div>
-            )
-          })}
+            </div>
+            <div className="cl-container">
+              <h2>Learn C, C++, C#</h2>
+              <p>Learn with our resources and become a pro of C language!</p>
+            </div>
+        </div>
+        <div className="php-div">
+            <div className="php-container">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png" alt="book javascript"/>
+              <Button href="/books/openlibra/programacion_php">Go to section!</Button>
+            </div>
+            <div className="php-container">
+              <h2>PHP</h2>
+              <p>Learn PHP with our resources</p>
+            </div>
         </div>
         <div className="home-section2">
           <div>

@@ -481,7 +481,6 @@ a:hover{
 .home-section2{
 	color: white;
 	width: 100%;
-	height: 300px;
 	display: flex;
 	text-align: center;
 	flex-direction: column;
@@ -852,4 +851,181 @@ footer {
 }
 /* END OF CSS OF FOOTER */
 
-/* PRUEBA */
+
+/* HOME SECTIONS */
+
+.js-div{
+	width: 100%;
+	height: 350px;
+	display: flex;
+	flex-direction: row;
+	background-image: url("https://miro.medium.com/max/3200/1*OF0xEMkWBv-69zvmNs6RDQ.gif");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.js-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+}
+
+.js-container img {
+	max-width: 200px;
+	height: auto;
+}
+
+.js-container h2{
+	font-family: 'Roboto', sans-serif;
+	color: rgba(97, 79, 53, 0.849);
+	font-weight: 800;
+}
+
+.js-container p{
+	font-weight: 700;
+	color: white;
+}
+
+.js-container a{
+	margin-top: 30px;
+}
+
+.cl-div{
+	width: 100%;
+	height: 350px;
+	display: flex;
+	flex-direction: row;
+	background-color: #2b30c0;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.cl-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+}
+
+.cl-container img {
+	width: 127px;
+	height: 140px;
+}
+
+.cl-container h2{
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	font-weight: 800;
+}
+
+.cl-container p{
+	font-weight: 700;
+	color: white;
+}
+
+.cl-container a{
+	margin-top: 30px;
+}
+
+.cl-buttons{
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.cl-buttons a{
+	margin: 10px;
+	width: 150px;
+}
+
+.php-div{
+	width: 100%;
+	height: 350px;
+	display: flex;
+	flex-direction: row;
+	background-image: url("https://altruistas.org/wp-content/uploads/2020/03/Programacion-en-PHP-altruistas.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.php-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+}
+
+.php-container img {
+	width: 180px;
+	height: 150px;
+}
+
+.php-container h2{
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	font-weight: 800;
+}
+
+.php-container p{
+	font-weight: 700;
+	color: white;
+}
+
+.php-container a{
+	margin-top: 30px;
+}
+
+.web-section{
+	width: 100%;
+	height: 350px;
+	background-image: url("https://www.elegantthemes.com/blog/wp-content/uploads/2018/12/top11.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: white;
+}
+
+.web-container{
+	padding: 20px;
+}
+
+.web-container h2{
+	font-weight: 900;
+}
+
+@media(min-width: 600px){
+	.js-container{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+	}
+	.cl-div{
+		width: 100%;
+		height: 350px;
+		display: flex;
+		flex-direction: row;
+		background-color: #2b30c0;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+}
+
+/* END HOME SECTIONS */
