@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import service from "../api/service";
 import Paginacion from './Paginacion';
+import Prueba from '../components/Prueba';
 
 class MyBooks extends Component {
     state = {
@@ -54,51 +55,50 @@ class MyBooks extends Component {
     }
 
     render() {
+        const books = this.state.books;
         return (
             <div className="container2">
                 <div className="create-div">
                     <h1>Our books</h1>
                 </div>
-                <div className="pagination">
-                    <Paginacion
-                        paginaAnterior={this.paginaAnterior}
-                        paginaSiguiente={this.paginaSiguiente}
-                    />
-                </div>
-                {this.state.books?.map((book) => {
+                {books?.map((book, index) => {
                     return (
-                        <div key={book._id} className="card">
-                            <img src={book.poster} alt={book.title} />
-                            <div>
-                                <h3>{book.title}</h3>
-                                <h5>{book.year}</h5>
-                                <div className="align-delete">
-                                    <a href={`/details/${book._id}`}>Details</a>
-                                    <Button onClick={() => this.deleteBook(book._id)} className="primary" variant="primary" size="sm" active>Delete</Button>
-                                    <a href={`/books/upload/${book._id}`} className="material-icons">Edit Book</a>
-
-                                </div>
-                            </div>
-                        </div>
+                        <Prueba
+                            books={this.state.books}
+                            title={book.title}
+                            image={book.poster}
+                        />
                     )
-                })},
+                })}
+                <h2><strong>What's new?</strong></h2>
+                <div class="news">
+                    <figure class="article">
+                        <img src="https://mrreiha.keybase.pub/codepen/hover-fx/news1.jpg" alt="pesaos lechee"/>
+                        <figcaption>
+                            <h3>New Item</h3>
+                            <p>In today’s update, two heads are better than one,
+                            and three heads are better than that, as the all-new
+                            Flockheart’s Gamble Arcana item for Ogre Magi makes its grand debut.
+				            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="article">
+                        <img src="https://mrreiha.keybase.pub/codepen/hover-fx/news2.png" alt="prueba" />
+                        <figcaption>
+                            <h3>Update</h3>
+                            <p>Just in time for Lunar New Year and the Rat’s time in the cyclical
+                            place of honor, the Treasure of Unbound Majesty is now available.
+                            </p>
+                        </figcaption>
+                    </figure>
+                </div>
                 <div className="pagination">
                     <Paginacion
                         paginaAnterior={this.paginaAnterior}
                         paginaSiguiente={this.paginaSiguiente}
                     />
                 </div>
-                {/* <div className="no-results">
-                            <div className="no-results-content">
-                                <h1>No hay más libros!!</h1>
-                                <img src="https://res.cloudinary.com/ytyt/image/upload/v1607374224/books/undraw_result_5583_nsotqq.svg" alt="No reuslts"/>
-                                <div className="buttons-results">
-                                    <Button onClick={() => this.paginaSiguiente()} className="primary" variant="primary" size="sm" active>Vuelve!</Button>
-                                    <Button href="/books/create" className="primary" variant="primary" size="sm" active>Añade libro</Button>
-                                </div>
-                            </div>
-                        </div> */}
-                
             </div>
         );
     }

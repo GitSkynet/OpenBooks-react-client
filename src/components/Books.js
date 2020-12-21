@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import service from "../api/service";
 import Paginacion from './Paginacion';
-import { Button } from 'react-bootstrap';
+//import { Button } from 'react-bootstrap';
+import Prueba from '../components/Prueba';
 
 class Books extends Component {
     state = {
@@ -33,12 +34,12 @@ class Books extends Component {
 
     paginaSiguiente = () => {
         let pagina = this.state.pagina;
-        let books = this.state.books;
-        if (books) {
+        let count = this.state.books.length;
+        if (count===0) {
+            this.setState({ pagina: 0 });
+        } else {
             pagina++;
             this.setState({ pagina: pagina });
-        } else {
-            this.setState({ pagina: 0 });
         }
         this.scroll();
     }
@@ -51,11 +52,6 @@ class Books extends Component {
         this.getAllBooks();
     }
 
-    componentWillUnmount = () => {
-        this.getAllBooks();
-    }
-
-
     render() {
         const books = this.state.books;
         return (
@@ -63,15 +59,14 @@ class Books extends Component {
                 <div className="create-div">
                     <h1>{this.state.name}</h1>
                 </div>
-                {books?.map((book, index) => {
+                {books?.map((book) => {
                     return (
-                        <div key={index} className="card" style={{ backgroundImage: `url(${book.cover})`, backgroundPosition: "center", backgroundSize: "cover" }}>
-                            <div className="card-body">
-                                <h5>{book.title}</h5>
-                                <h6>{book.author}</h6>
-                                <Button href={`/details/${book.ID}`} className="primary" variant="primary" size="sm">Details</Button>
-                            </div>
-                        </div>
+                        <Prueba 
+                            id={book.ID}
+                            books={this.state.books}
+                            title={book.title}
+                            image={book.cover}
+                        />
                     )
                 })}
                 <div className="pagination">
@@ -80,14 +75,29 @@ class Books extends Component {
                         paginaSiguiente={this.paginaSiguiente}
                     />
                 </div>
-                {/* <div className="no-results">
-                    <div className="no-results-content">
-                        <h1>No hay más libros!!</h1>
-                        <img src="https://res.cloudinary.com/ytyt/image/upload/v1607374224/books/undraw_result_5583_nsotqq.svg" alt="No reuslts" />
-                        <div className="buttons-results">
-                            <Button onClick={() => this.paginaSiguiente()} className="primary" variant="primary" size="sm" active>Vuelve!</Button>                            </div>
-                    </div>
-                </div> */}
+                <h2><strong>What's new?</strong></h2>
+                <div class="news">
+                    <figure class="article">
+                        <img src="https://mrreiha.keybase.pub/codepen/hover-fx/news1.jpg" alt="pesaos lechee"/>
+                        <figcaption>
+                            <h3>New Item</h3>
+                            <p>In today’s update, two heads are better than one,
+                            and three heads are better than that, as the all-new
+                            Flockheart’s Gamble Arcana item for Ogre Magi makes its grand debut.
+				            </p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="article">
+                        <img src="https://mrreiha.keybase.pub/codepen/hover-fx/news2.png" alt="prueba" />
+                        <figcaption>
+                            <h3>Update</h3>
+                            <p>Just in time for Lunar New Year and the Rat’s time in the cyclical
+                            place of honor, the Treasure of Unbound Majesty is now available.
+                            </p>
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
         );
     }

@@ -9,15 +9,15 @@ class Navbar2 extends Component {
         return (
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand href="/">OpenBooks V2</Navbar.Brand>
+                    <Navbar.Brand href="/">OpenBooks   <img className="logo-navbar" src="https://res.cloudinary.com/ytyt/image/upload/v1608556604/books/favicon_bwnara.png" alt="logo" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         {isLoggedin ? (
                             <>
                                 <Nav className="mr-auto">
                                     <Nav.Link href="/private">Profile</Nav.Link>
-                                    <Nav.Link href="/books">Our Books</Nav.Link>
-                                    <Nav.Link href="/books/google-books">Google Books</Nav.Link>
+                                    <Nav.Link href="/books/ourbooks">Our Books</Nav.Link>
+                                    <Nav.Link href="/books/googlebooks">Google Books</Nav.Link>
                                     <Nav.Link href="/books/openlibra">Open Libra</Nav.Link>
                                     <NavDropdown title="Categorías" id="collasible-nav-dropdown">
                                         <NavDropdown.Item href="/books/openlibra/control_de_versiones">Git & GitHub</NavDropdown.Item>

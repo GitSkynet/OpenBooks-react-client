@@ -6,7 +6,7 @@ import axios from 'axios';
 class DetailsBook extends Component {
     state = {
         book: {},
-        author: ""
+        categories: []
     }
 
     getDetailsBook = () => {
@@ -37,18 +37,29 @@ class DetailsBook extends Component {
         return (
             <div className="card2">
                 <div className="img-div">
-                    <img src={book.poster} alt={book.title}/>
+                    <img src={book.cover} alt={book.title}/>
                 </div>
                 <div>
                     <h2>Escritor: {book.author}</h2>
                     <h3>{book.title}</h3>
-                    <h4>{book.author}</h4>
+                    <h5>Pages: {book.pages}</h5>
+                    <h5>Publisher: {book.publisher}</h5>
+                    <h5>{book.publisher_date}</h5>
+                    <div className="details-categories">
+                        {book.categories?.map((eachCategory, index) => {
+                            return(
+                                <a href={`/books/openlibra/${eachCategory.nicename}`}>
+                                    <div className="each-category">
+                                        <p className="parraf">{eachCategory.name}</p>
+                                    </div>
+                                </a>
+                            )
+                        })}
+                    </div>
                     <p>Descripción : <br/> {book.content}</p>
-                    <Button><a href={book.url_download} target="_blank" rel="noopener noreferrer">Download</a></Button>
                 </div>
                 <div className="align-delete">
-                    <Button onClick={() => this.deleteBook(book.ID)} >Delete</Button>
-                    <Button><a href={`/books/upload/${book.ID}`}>Edit</a></Button>
+                    <Button href={book.url_download} target="_blank" rel="noopener noreferrer">Download</Button>
                 </div>
             </div>
         );

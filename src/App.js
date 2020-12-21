@@ -31,8 +31,8 @@ class App extends Component {
             <AnonRoute exact path='/signup' component={Signup} />
             <AnonRoute exact path='/login' component={Login} />
             <Route exact path='/books/openlibra/:name' component={Books} />
-            <Route exact path='/books' component={MyBooks} />
-            <Route exact path='/books/google-books' component={GoogleBooks} />
+            <Route exact path='/books/ourbooks' component={MyBooks} />
+            <Route exact path='/books/googlebooks' component={GoogleBooks} />
             <Route exact path='/books/openlibra' component={OpenLibra} />
             <Route exact path='/books/upload/:id' component={UpdatedBook} />
             <Route exact path='/books/create' component={CreateBook} />

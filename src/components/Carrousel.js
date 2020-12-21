@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 
 class Carrousel extends Component {
   state ={
-    subcategories: [],
+    categories: [],
     image: ""
   }
 
@@ -13,6 +13,7 @@ class Carrousel extends Component {
       <div>
         <h1>Most downloaded on...</h1>
       <Carousel>
+        
         <Carousel.Item>
           <img
             style={{ height: "300px", backgroundPosition: "center", backgroundSize: "cover" }}
