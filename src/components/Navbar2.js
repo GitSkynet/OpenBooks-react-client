@@ -7,7 +7,6 @@ class Navbar2 extends Component {
         const { logout, isLoggedin } = this.props;	//	<-- UPDATE HERE
 
         return (
-            <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Navbar.Brand href="/">OpenBooks   <img className="logo-navbar" src="https://res.cloudinary.com/ytyt/image/upload/v1608556604/books/favicon_bwnara.png" alt="logo" /></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -42,7 +41,6 @@ class Navbar2 extends Component {
                             </>)}
                     </Navbar.Collapse>
                 </Navbar>
-            </div>
         );
     }
 }

@@ -24,7 +24,6 @@ class App extends Component {
   render() {
     return (
       <AuthProvider>
-        <>
           <Navbar2 />
           <Switch>
             <Route exact path='/' component={Home} />
@@ -39,9 +38,7 @@ class App extends Component {
             <PrivateRoute exact path="/details/:id" component={DetailsBook} />
             <PrivateRoute exact path='/private' component={Private} />
           </Switch>
-
           <Footer />
-        </>
       </AuthProvider>
     );
   }

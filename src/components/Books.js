@@ -59,44 +59,22 @@ class Books extends Component {
                 <div className="create-div">
                     <h1>{this.state.name}</h1>
                 </div>
+                <div className="wrapperbooks">
                 {books?.map((book) => {
                     return (
                         <Prueba 
                             id={book.ID}
-                            books={this.state.books}
                             title={book.title}
                             image={book.cover}
                         />
                     )
                 })}
+                </div>
                 <div className="pagination">
                     <Paginacion
                         paginaAnterior={this.paginaAnterior}
                         paginaSiguiente={this.paginaSiguiente}
                     />
-                </div>
-                <h2><strong>What's new?</strong></h2>
-                <div class="news">
-                    <figure class="article">
-                        <img src="https://mrreiha.keybase.pub/codepen/hover-fx/news1.jpg" alt="pesaos lechee"/>
-                        <figcaption>
-                            <h3>New Item</h3>
-                            <p>In today’s update, two heads are better than one,
-                            and three heads are better than that, as the all-new
-                            Flockheart’s Gamble Arcana item for Ogre Magi makes its grand debut.
-				            </p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="article">
-                        <img src="https://mrreiha.keybase.pub/codepen/hover-fx/news2.png" alt="prueba" />
-                        <figcaption>
-                            <h3>Update</h3>
-                            <p>Just in time for Lunar New Year and the Rat’s time in the cyclical
-                            place of honor, the Treasure of Unbound Majesty is now available.
-                            </p>
-                        </figcaption>
-                    </figure>
                 </div>
             </div>
         );
