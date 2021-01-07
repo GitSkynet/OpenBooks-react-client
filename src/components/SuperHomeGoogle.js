@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import BookCard from '../components/BookCard';
 import service from "../api/service";
 import Paginacion from './Paginacion';
-import { Form } from 'react-bootstrap';
 
 class SuperHome extends Component {
     state ={
@@ -11,12 +10,12 @@ class SuperHome extends Component {
         books: []
     }
 
-    getAllBooks = async () => {
+    getBooks = async () => {
         const name = this.state.name;
-        const pagina = this.state.pagina;
-        const allBooks = await service.getBooksFromApi(name, pagina)
-        this.setState({ books: allBooks })
-    }
+        let books = await service.getGoogleBooks(name);
+        this.setState({ books: books });
+        console.log(this.state.books, "!!!books!!");
+      };
 
     scroll = () => {
         const element = document.querySelector('.popular-books');
@@ -43,47 +42,45 @@ class SuperHome extends Component {
     }
 
     componentDidMount = () =>{
-        this.getAllBooks();
+        this.getBooks();
     }
 
-    componentDidUpdate = () =>{
-        this.getAllBooks();
-    }
-
-    ChangeName = (name2) => {
+    changeName = (name2) => {
         if(this.state.name){
             this.setState({ name: name2});
-        }  
+        }
     }
 
   render() {
-      const books = this.state.books;
     return (
-        <div className="book-store">
+    <div className="book-store">
         <div className="popular-books">
             <div className="main-menu">
-                <div className="genre"><span>Top books on...</span></div>
-                <Form.Control as="select" className="book-types">
-                    <option onClick={() => this.ChangeName("javascript")} className="book-type">JavaScript</option>
-                    <option onClick={() => this.ChangeName("bases_de_datos")} className="book-type">Bases de datos</option>
-                    <option onClick={() => this.ChangeName("programacion_php")} className="book-type">{" "}PHP</option>
-                    <option onClick={() => this.ChangeName("desarrollo_web")} className="book-type">{" "}Web</option>
-                    <option onClick={() => this.ChangeName("programacion_java")} className="book-type">{" "}Java</option>
-                    <option onClick={()=> this.ChangeName("pet-python-entre-todos")} className="book-type">{" "}Python</option>
-                </Form.Control>
+                <div className="genre">Most downloaded on <span>{this.state.name}</span></div>
+                <ul className="book-types">
+                    <li onClick={() => this.changeName("javascript")} className="book-type active">JavaScript</li>
+                    <li onClick={() => this.changeName("bases_de_datos")} className="book-type">Bases de datos</li>
+                    <li onClick={() => this.changeName("php")} className="book-type">{" "}PHP</li>
+                    <li onClick={() => this.changeName("web")} className="book-type">{" "}Web</li>
+                    <li onClick={() => this.changeName("java")} className="book-type">{" "}Java</li>
+                    <li onClick={()=> this.changeName("python")} className="book-type">{" "}Python</li>
+                </ul>
             </div>
             <div className="book-cards">
-                 {books?.map((book, key= this.state.books.ID) => {
+                 {this.state.books?.map((book, index) => {
                     return (
-                        <BookCard 
-                            key= {key}
+                        <BookCard
+                            id={index}
+                            title={book.volumeInfo.title}
+                            preview={book.volumeInfo.previewLink}
+                            image={book.volumeInfo.imageLinks?.thumbnail}
                             content={book.content_short}
-                            image={book.cover}
-                            title={book.title}
                             publisher={book.publisher}
-                            date={book.publisher_date}
+                            date={book.publishedDate}
+                            amount={book.saleInfo.listPrice?.amount}
+                            money={book.saleInfo.listPrice?.currencyCode}
                             author={book.author}
-                        />
+                    />
                 )
                 })}            
             </div>
@@ -95,6 +92,7 @@ class SuperHome extends Component {
                 </div>
         </div>
         </div>
+
     );
   }
 }

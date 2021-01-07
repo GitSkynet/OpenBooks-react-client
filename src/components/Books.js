@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import service from "../api/service";
 import Paginacion from './Paginacion';
 //import { Button } from 'react-bootstrap';
-import Prueba from '../components/Prueba';
+import BookCard from './BookCard';
 
 class Books extends Component {
     state = {
@@ -59,13 +59,17 @@ class Books extends Component {
                 <div className="create-div">
                     <h1>{this.state.name}</h1>
                 </div>
-                <div className="wrapperbooks">
+                <div className="book-cards">
                 {books?.map((book) => {
                     return (
-                        <Prueba 
+                        <BookCard 
                             id={book.ID}
                             title={book.title}
                             image={book.cover}
+                            content={book.content_short}
+                            publisher={book.publisher}
+                            date={book.publisher_date}
+                            author={book.author}
                         />
                     )
                 })}

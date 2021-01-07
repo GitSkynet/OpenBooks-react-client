@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import Button from 'react-bootstrap/Button';
 import service from "../api/service";
 import Paginacion from './Paginacion';
-import Prueba from '../components/Prueba';
+import BookCard from './BookCard';
 
 class MyBooks extends Component {
     state = {
@@ -63,7 +63,7 @@ class MyBooks extends Component {
                 </div>
                 {books?.map((book, index) => {
                     return (
-                        <Prueba
+                        <BookCard
                             id={book._id}
                             books={this.state.books}
                             title={book.title}

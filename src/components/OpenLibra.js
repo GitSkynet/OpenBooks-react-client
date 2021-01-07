@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import service from '../api/service';
 import SearchBar from "../components/SearchBar";
 import ResultsOpenLibra from './ResultsOpenLibra';
-import CarrouselOL from './CarrouselOL';
+import SuperHome from './SuperHome';
 
 class OpenLibra extends Component {
     state = {
@@ -50,7 +50,8 @@ class OpenLibra extends Component {
                     return <ResultsOpenLibra key={index} theBook={book} />
                 })}
             </div>
-            <CarrouselOL />
+            
+            <SuperHome />
                 <div className="home-section">
                     <h1>Categories</h1>
                     <h2>Navigate directly to...</h2>

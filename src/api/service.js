@@ -83,9 +83,12 @@ class Service {
   
   //GET Route
   getBooksFromApi = async ( name, pagina= 0) => {
+    const page = pagina*10;
     try {
-      const res = await this.service.get(`/books/openlibra/${name}/${pagina}`);
-      return res.data;
+      const counter = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&count_items=true`);
+      const count = counter.data.num_items;
+      const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&num_items=${count}&results_range=${page},10`);
+      return (books.data)
     } catch (error) {
       console.log(error)
     }
@@ -94,8 +97,8 @@ class Service {
   //Search funtion over OpenLilbra API
   searchBook = async (name) => {
     try {
-      const res = await this.service.get(`/books/openlibra/search/${name}`)
-      console.log(res, "OJOOOO")
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${name}`);
+      console.log(res.data, "OJOOOO")
       return res.data; 
     }catch (error) {
       console.log(error);
@@ -105,13 +108,12 @@ class Service {
   //Get Categories from API
   getCategoriesFromApi = async () => {
     try {
-      const res = await this.service.get(`/books/openlibra`);
-      return res.data
+      const res = await axios.get("https://www.etnassoft.com/api/v1/get/?get_categories=all");
+      return res.data;
     } catch (error) {
       console.log(error)
     }
   }
-
 
   ////////////////////////////END BOOKS FROM OPENLIBRA API///////////////////////////////////
 
@@ -120,10 +122,10 @@ class Service {
   ////////////////////////////BOOKS FROM GOOGLEBOOKS API///////////////////////////////////////
 
   //GET Route from Google Books API
-  getGoogleBooks = async ( name, pagina=0) => {
+  getGoogleBooks = async ( name) => {
     try {
-      const res = await this.service.get("/books/googlebooks");
-      return res.data;
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${name}&key=AIzaSyBzD61cSMcd6Si4XKfkchWaHRiXrmlFGFU`);
+      return res.data.items;              
     } catch (error) {
       console.log(error)
     }
@@ -131,7 +133,7 @@ class Service {
 
   searchGoogle = async (query) => {
     try {
-      const res = await this.service.get(`/books/googlebooks/search/${query}`)
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyBzD61cSMcd6Si4XKfkchWaHRiXrmlFGFU&maxResults=40`);
       console.log(res, "cliente respuesta")
       return res; 
     }catch (error) {
@@ -140,7 +142,6 @@ class Service {
   };
 
   ////////////////////////////END BOOKS FROM GOOGLEBOOKS API/////////////////////////////////
-  //<<<<<<<<<<<<<<<<<<<<<<<<<<<----------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
 
 const axiosRequestFunctions = new Service();

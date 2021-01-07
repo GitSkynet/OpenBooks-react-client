@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
+import { InputGroup, FormControl, Button, Form } from 'react-bootstrap';
 
 class SearchBar extends Component {
 
@@ -16,14 +16,9 @@ class SearchBar extends Component {
         return (
             <div className="search-div">
                 <InputGroup onChange={(e) => this.handleChange(e)} type="text" name="name" className="mb-3">
-                    <FormControl
-                        placeholder="Search over the OpenLibra API..."
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
-                    />
-                    <InputGroup.Append>
-                        <Button variant="outline-secondary">Search</Button>
-                    </InputGroup.Append>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Search book" className="mr-sm-2" style={{marginRight: '0'}}/>
+                    </Form>
                 </InputGroup>
             </div>
         )

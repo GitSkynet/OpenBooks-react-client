@@ -2,15 +2,76 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import NewsHome from '../components/NewsHome';
 import NewsHome2 from '../components/NewsHome2';
-import SuperHome from '../components/SuperHome';
+import SimpleSlider from '../components/SimpleSlider';
+import SearchBar from "../components/SearchBar";
+import ResultsOpenLibra from '../components/ResultsOpenLibra';
+import service from '../api/service';
+
 class Home extends Component {
+  state={
+    filteredBooks: []
+  } 
+  
+  //Search Function
+   searchOpenLibra = async (searchTerm) => {
+    const searchedTerm = searchTerm.toLowerCase();
+    const filteredList = await service.searchBook(searchedTerm);
+    if (searchTerm) {
+        this.setState({ filteredBooks: filteredList })
+    }
+  }
+  
+  clearSearch = () => {
+    this.setState({ filteredBooks: [] });
+  }
 
   render() {
     return (
       <>
-        <NewsHome2 />
-        <SuperHome />
-        <NewsHome />
+        {/* <NewsHome2 />   // Introduction section (!! CHANGE NAME !!)
+        <NewsHome />    // JavaScript section (!! CHANGE NAME !!) */}
+        <SearchBar
+          filterSearch={this.searchOpenLibra}
+          clearSearch={this.clearSearch}
+        />
+        <div className="google-results">
+          {this.state.filteredBooks?.map((book, index) => {
+            return <ResultsOpenLibra key={index} theBook={book} />
+          })}
+        </div>
+        <div>
+          <div className="container-slider">
+            <h6>Most rated on...</h6>
+            <img src="https://openlibra.blob.core.windows.net/assets-files/powered-by-openlibra-logo.png" alt="Open Libra Logo" />
+          </div>
+          <div className="home-slider">
+            <h6>JavaScript</h6>
+              <a href={("/books/openlibra/javascript")}>View all results</a>
+          </div>
+          <div>
+            <SimpleSlider 
+            name={'javascript'}
+            />
+          </div>
+          <div className="home-slider">
+            <h6>PHP</h6>
+            <a href={("/books/openlibra/programacion_php")}>View all results</a>
+          </div>
+          <div>
+            <SimpleSlider 
+              name={'programacion_php'}
+            />
+          </div>
+          <div className="home-slider">
+            <h6>Web Development</h6>
+            <a href={("/books/openlibra/desarrollo_web")}>View all results</a>
+          </div>
+          <div>
+            <SimpleSlider 
+              name={'desarrollo_web'}
+            />
+          </div>
+        </div>
         <div className="web-section">
           <div className="web-container">
             <h2>Learn Web Development</h2>
