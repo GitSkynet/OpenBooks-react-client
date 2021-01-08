@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import service from "../api/service";
 import Paginacion from './Paginacion';
-//import { Button } from 'react-bootstrap';
 import BookCard from './BookCard';
 
 class Books extends Component {

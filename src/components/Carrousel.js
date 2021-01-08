@@ -8,13 +8,20 @@ class Carrousel extends Component {
     image: ""
   }
 
+  funcion = () => {
+    console.log(document.getElementById('query').innerHTML);
+  }
+
+  componentDidUpdate = () => {
+    this.funcion();
+  }
+
   render() {
     return (
       <div>
         <h1>Most downloaded on...</h1>
       <Carousel>
-        
-        <Carousel.Item>
+        <Carousel.Item onChange={() => this.funcion()}>
           <img
             style={{ height: "300px", backgroundPosition: "center", backgroundSize: "cover" }}
             className="d-block w-100"
@@ -22,11 +29,11 @@ class Carrousel extends Component {
             alt="First slide"
           />
           <Carousel.Caption>
-            <Button href="/books/openlibra/javascript">JavaScript</Button>
+            <Button id="query" href="/books/openlibra/javascript">JavaScript</Button>
           </Carousel.Caption>
         </Carousel.Item>
         
-        <Carousel.Item>
+        <Carousel.Item onChange={() => this.funcion()}>
           <img
             style={{ height: "300px", backgroundPosition: "cover" }}
             className="d-block w-100"
@@ -35,11 +42,11 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>Desarrollo Web</h3>
-            <Button href="/books/openlibra/desarrollo_web">Desarrollo Web</Button>
+            <Button  id="query" href="/books/openlibra/desarrollo_web">Desarrollo Web</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item onChange={() => this.funcion()}>
           <img
             style={{ height: "300px", backgroundPosition: "cover" }}
             className="d-block w-100"
@@ -48,11 +55,11 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>C programming</h3>
-            <Button href="/books/openlibra/c">Programming inC Language</Button>
+            <Button  id="query" href="/books/openlibra/c">Programming inC Language</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item onChange={() => this.funcion()}>
           <img
             style={{ height: "300px", backgroundPosition: "cover" }}
             className="d-block w-100"
@@ -61,11 +68,11 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>PHP</h3>
-            <Button href={`/books/openlibra/programacion_php`}>PHP</Button>
+            <Button  id="query" href={`/books/openlibra/programacion_php`}>PHP</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item onChange={() => this.funcion()}>
           <img
             style={{ height: "300px", backgroundPosition: "cover" }}
             className="d-block w-100"
@@ -74,11 +81,11 @@ class Carrousel extends Component {
           />
           <Carousel.Caption>
             <h3>Algoritmos</h3>
-            <Button href={`/books/openlibra/algoritmos`}>Algorithms</Button>
+            <Button  id="query" href={`/books/openlibra/algoritmos`}>Algorithms</Button>
           </Carousel.Caption>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item onChange={() => this.funcion()}>
           <img
             style={{ height: "300px", backgroundPosition: "cover" }}
             className="d-block w-100"

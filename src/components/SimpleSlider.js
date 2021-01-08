@@ -13,7 +13,6 @@ export default class MultipleItems extends Component {
     const name = this.props.name;
     const allBooks = await service.getBooksFromApi(name);
     this.setState({ books: allBooks });
-    console.log(this.props, "PROPS!!!!")
   };
 
   componentDidMount = () =>{

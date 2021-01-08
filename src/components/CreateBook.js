@@ -101,7 +101,7 @@ class CreateBook extends Component {
           <label htmlFor="">Select poster:</label>
           <input className="input" type="file" onChange={(e) => this.handleFileUpload(e)} />
 
-        <button type="submit">Save new movie</button>
+        <button type="submit">Save book!</button>
         </form>
             </div>
         );

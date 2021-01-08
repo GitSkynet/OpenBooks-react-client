@@ -46,7 +46,9 @@ class SuperHome extends Component {
         <div className="book-store">
         <div className="popular-books">
             <div className="main-menu">
-                <div className="genre"><span>Top books on {this.state.nicename}</span></div>
+                <div className="genre">
+                    <span>Top books on {this.state.nicename}</span>
+                </div>
                 <NavDropdown title="Dropdown" id="basic-nav-dropdown" className="book-types">
                     <NavDropdown.Item onClick={() => this.ChangeName("javascript")}>JavaScript</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => this.ChangeName("bases_de_datos")}>Bases de datos</NavDropdown.Item>

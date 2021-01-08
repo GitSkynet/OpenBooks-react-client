@@ -122,7 +122,7 @@ class Service {
   ////////////////////////////BOOKS FROM GOOGLEBOOKS API///////////////////////////////////////
 
   //GET Route from Google Books API
-  getGoogleBooks = async ( name) => {
+  getGoogleBooks = async (name) => {
     try {
       const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${name}&key=AIzaSyBzD61cSMcd6Si4XKfkchWaHRiXrmlFGFU`);
       return res.data.items;              
