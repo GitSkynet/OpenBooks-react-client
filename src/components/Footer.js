@@ -6,7 +6,7 @@ class Footer extends Component {
             <>
             <footer className="footer-distributed">
                 <div className="footer-left">
-                    <h3>OPEN<span>BOOKS</span></h3>
+                    <a href="/"><h3>OPEN<span>BOOKS</span></h3></a>
                     <p className="footer-company-name">Carlos Curtido &reg; 2020</p>
                 </div>
     
