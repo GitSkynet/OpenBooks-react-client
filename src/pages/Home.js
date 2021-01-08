@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import NewsHome from '../components/NewsHome';
-import NewsHome2 from '../components/NewsHome2';
+// import NewsHome from '../components/NewsHome';
+// import NewsHome2 from '../components/NewsHome2';
 import SimpleSlider from '../components/SimpleSlider';
 import SearchBar from "../components/SearchBar";
 import ResultsOpenLibra from '../components/ResultsOpenLibra';
@@ -71,36 +71,32 @@ class Home extends Component {
               name={'desarrollo_web'}
             />
           </div>
-        </div>
-        <div className="web-section">
-          <div className="web-container">
-            <h2>Learn Web Development</h2>
-            <p>Books about stuff of web development</p>
-            <Button href="/books/openlibra/desarrollo_web">Go to section!</Button>
+          <div className="home-slider">
+            <h6>C Development</h6>
+            <a href={("/books/openlibra/c")}>View all results</a>
           </div>
-        </div>
-        <div className="cl-div">
-          <div className="cl-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png" alt="book javascript" />
-            <div className="cl-buttons">
-              <Button href="/books/openlibra/c">C</Button>
-              <Button href="/books/openlibra/c-plus-plus">C++</Button>
-              <Button href="/books/openlibra/c-sharp">C#</Button>
-            </div>
+          <div>
+            <SimpleSlider 
+              name={'c'}
+            />
           </div>
-          <div className="cl-container">
-            <h2>Learn C, C++, C#</h2>
-            <p>Learn with our resources and become a pro of C language!</p>
+          <div className="home-slider">
+            <h6>C# Development</h6>
+            <a href={("/books/openlibra/c-sharp")}>View all results</a>
           </div>
-        </div>
-        <div className="php-div">
-          <div className="php-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png" alt="book javascript" />
-            <Button href="/books/openlibra/programacion_php">Go to section!</Button>
+          <div>
+            <SimpleSlider 
+              name={'c-sharp'}
+            />
           </div>
-          <div className="php-container">
-            <h2>PHP</h2>
-            <p>Learn PHP with our resources</p>
+          <div className="home-slider">
+            <h6>C++ Development</h6>
+            <a href={("/books/openlibra/c-plus-plus")}>View all results</a>
+          </div>
+          <div>
+            <SimpleSlider 
+              name={'c-plus-plus'}
+            />
           </div>
         </div>
         <div className="home-section2">
@@ -117,7 +113,7 @@ class Home extends Component {
             <ul className="home_section2_list">
               <li>Enjoy OpenBooks allways without ads</li>
               <li>Keep a personal book-list</li>
-              <li>Filter your books by favourite, read...explore!</li>
+              <li>Filter your books by favourite, share book with others...explore!</li>
               <li>Download directly or view online</li>
               <li>Create personal lists</li>
               <li>Contribute and improve our database</li>

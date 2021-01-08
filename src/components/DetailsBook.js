@@ -18,11 +18,6 @@ class DetailsBook extends Component {
         })
     }
 
-    // getDetailsBook = async () => {
-    //     let res = await service.getDetailsBook(this.props.match.params.id);
-    //     this.setState({ book: res })
-    // }
-
     deleteBook = async () => {
         await service.deleteBook(this.props.match.params.id);
         this.props.history.push("/books");

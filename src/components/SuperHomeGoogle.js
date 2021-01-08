@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import BookCard from '../components/BookCard';
 import service from "../api/service";
-import Paginacion from './Paginacion';
 
 class SuperHome extends Component {
     state ={
@@ -16,30 +15,6 @@ class SuperHome extends Component {
         this.setState({ books: books });
         console.log(this.state.books, "!!!books!!");
       };
-
-    scroll = () => {
-        const element = document.querySelector('.popular-books');
-        element.scrollIntoView('ease-in', 'start');
-    }
-    paginaAnterior = () => {
-        let pagina = this.state.pagina
-        if (pagina === 0) return null;
-        pagina--;
-        this.setState({ pagina: pagina });
-        this.scroll();
-    }
-
-    paginaSiguiente = () => {
-        let pagina = this.state.pagina;
-        let count = this.state.books.length;
-        if (count===0) {
-            this.setState({ pagina: 0 });
-        } else {
-            pagina++;
-            this.setState({ pagina: pagina });
-        }
-        this.scroll();
-    }
 
     componentDidMount = () =>{
         this.getBooks();
@@ -73,23 +48,18 @@ class SuperHome extends Component {
                             id={index}
                             title={book.volumeInfo.title}
                             preview={book.volumeInfo.previewLink}
+                            preview_name={'Preview'}
                             image={book.volumeInfo.imageLinks?.thumbnail}
-                            content={book.content_short}
+                            content={book.searchInfo.textSnippet}
                             publisher={book.publisher}
                             date={book.publishedDate}
                             amount={book.saleInfo.listPrice?.amount}
                             money={book.saleInfo.listPrice?.currencyCode}
-                            author={book.author}
+                            author={book.author}ç
                     />
                 )
                 })}            
             </div>
-            <div className="pagination">
-                    <Paginacion
-                        paginaAnterior={this.paginaAnterior}
-                        paginaSiguiente={this.paginaSiguiente}
-                    />
-                </div>
         </div>
         </div>
 

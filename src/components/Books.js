@@ -60,19 +60,21 @@ class Books extends Component {
                     <h1>{this.state.name}</h1>
                 </div>
                 <div className="book-cards">
-                {books?.map((book) => {
-                    return (
-                        <BookCard 
-                            id={book.ID}
-                            title={book.title}
-                            image={book.cover}
-                            content={book.content_short}
-                            publisher={book.publisher}
-                            date={book.publisher_date}
-                            author={book.author}
-                        />
-                    )
-                })}
+                    {books?.map((book) => {
+                        return (
+                            <BookCard 
+                                id={book.ID}
+                                title={book.title}
+                                image={book.cover}
+                                content={book.content_short}
+                                publisher={book.publisher}
+                                date={book.publisher_date}
+                                author={book.author}
+                                preview={`/details/${book.ID}`}
+                                preview_name={'Details'}
+                            />
+                        )
+                    })}
                 </div>
                 <div className="pagination">
                     <Paginacion

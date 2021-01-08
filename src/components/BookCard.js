@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
 
 class BookCard extends Component {
-
   render() {
     return (
       <div className="book-card">
@@ -30,7 +29,7 @@ class BookCard extends Component {
             <div className="book-name">{this.props.date}</div>
             <div className="book-by">{this.props.author}</div>
             <div className="book-by">{this.props.amount} {this.props.money}</div>
-            <Button href={this.props.preview} className="book-by">Preview</Button>
+            <Button href={this.props.preview} className="book-by">{this.props.preview_name}</Button>
             <div className="book-sum card-sum">
               {this.props.content}{" "}
             </div>
