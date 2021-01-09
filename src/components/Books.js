@@ -9,6 +9,7 @@ class Books extends Component {
         pagina: 0,
         category: [],
         name: "",
+        count: 0
     }
 
     scroll = () => {
@@ -19,8 +20,9 @@ class Books extends Component {
     getAllBooks = async () => {
         const name = this.props.match.params.name;
         const pagina = this.state.pagina;
+        const count = await service.getCountItems(name);
         const allBooks = await service.getBooksFromApi(name, pagina)
-        this.setState({ books: allBooks, name: name })
+        this.setState({ books: allBooks, name: name, count: count })
     }
 
     paginaAnterior = () => {
@@ -57,6 +59,9 @@ class Books extends Component {
             <div className="container2">
                 <div className="create-div">
                     <h1>{this.state.name}</h1>
+                </div>
+                <div className="results-bookpage">
+                    <h5>{this.state.count} results</h5>
                 </div>
                 <div className="book-cards">
                     {books?.map((book) => {

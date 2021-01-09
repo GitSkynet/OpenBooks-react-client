@@ -45,7 +45,6 @@ class CreateBook extends Component {
             writer: "",
             poster: ""
           });
-          console.log('estado HANDLE SUBMIT', res)
           // this.props.getBooks()
         } catch (error) {
           console.log("Error while adding the movie: ", error);

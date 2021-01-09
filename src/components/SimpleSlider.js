@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import service from "../api/service";
-import Button from 'react-bootstrap/Button';
 
-export default class MultipleItems extends Component {
+class SimpleSlider extends Component {
   state = {
-    name: 'javascript',
+    name: this.props.name,
     books: [],
   };
 
   getAllBooks = async () => {
-    const name = this.props.name;
-    const allBooks = await service.getBooksFromApi(name);
-    this.setState({ books: allBooks });
+      const name = this.props.name;
+      const allBooks = await service.getBooksFromApi(name);
+      this.setState({ books: allBooks });
   };
 
   componentDidMount = () =>{
+    this.getAllBooks();
+  }
+
+  componentDidUpdate = () =>{
     this.getAllBooks();
   }
 
@@ -61,9 +64,12 @@ export default class MultipleItems extends Component {
           return (
             <div className="div-slider" key={key}>
                 <div className="slider-item">
-                {/* <h6>{book.title}</h6> */}
-                <img src={book.cover} alt={book.title}/>
-                <Button href={(`/details/${book.ID}`)}>More details</Button>
+                  <a href={(`/details/${book.ID}`)}>
+                    <img src={book.cover} alt={book.title}/>
+                  </a>
+                </div>
+                <div className="prueba1">
+                  <p>{book.title}</p>
                 </div>
             </div>
           )
@@ -72,3 +78,5 @@ export default class MultipleItems extends Component {
     );
   }
 }
+
+export default SimpleSlider;

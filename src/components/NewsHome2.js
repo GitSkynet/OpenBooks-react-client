@@ -1,23 +1,51 @@
 import React, { Component } from 'react';
+import service from '../api/service';
+import SearchBar from "../components/SearchBar";
+import ResultsOpenLibra from './ResultsOpenLibra';
 
 class NewsHome2 extends Component {
+    state = {
+        filteredBooks: [],
+        count: 0,
+        name: ''
+    }
+
+    //Search Function
+    searchOpenLibra = async (searchTerm) => {
+        const searchedTerm = searchTerm.toLowerCase();
+        const count = await service.getCountSearch(searchedTerm)
+        const filteredList = await service.searchBook(searchedTerm);
+        if (searchTerm) {
+            this.setState({ filteredBooks: filteredList, count: count, name: searchedTerm })
+        }
+    }
+
+    clearSearch = () => {
+        this.setState({ filteredBooks: [] });
+    }
+
     render() { 
         return (
-            <div style={{height: '100vh', backgroundImage: `url(https://images-na.ssl-images-amazon.com/images/I/71ol1jY8qQL._AC_SL1024_.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center'}} className="position-relative w-100">
-                <div className="position-absolute text-white d-flex flex-column align-items-center justify-content-center" style={{top: '0', right: '0', bottom: '0', left: '0', backgroundColor: 'rgba(0,0,0,.7)'}}>
-                    <div className="container-home">
-                        <div className="col-md-6">
-                            {/* <!-- on small screens remove display-4 --> */}
-                            <h1 className="mb-4 mt-2 display-4 font-weight-bold">Welcome to <span style={{color: '#9B5DE5'}}>OpenBooks </span></h1>
-                            <p style={{color: '#bbb'}}>Find resources on programming, science, chess, music, machine learning ... all thanks to the OpenLibra API!</p>
-                            <div className="mt-5" style={{display: 'flex', justifyContent: 'center'}}>
-                                {/* <!-- hover background-color: white; color: black; --> */}
-                                <a href="/private" className="btn px-5 py-3 text-white mt-3 mt-sm-0" style={{borderRadius: '30px', backgroundColor: '#9B5DE5'}}>Get Started</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <>
+            <div className="news-container">
+                <h5>Welcome to</h5>
+                <img src="https://openlibra.blob.core.windows.net/assets-files/powered-by-openlibra-logo.png" alt="Open Libra Logo" />
+                <SearchBar
+                    filterSearch={this.searchOpenLibra}
+                    clearSearch={this.clearSearch}
+                    count={this.state.count}
+                    name={this.state.name}
+                />
             </div>
+            <div className="google-results">
+            <div className="results-superhome">
+                {this.state.filteredBooks?.map((book, index) => {
+                    return <ResultsOpenLibra key={index} theBook={book} />
+                })}
+                
+            </div>
+            </div>
+        </>
         );
     }
 }

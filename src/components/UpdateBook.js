@@ -12,7 +12,6 @@ class UpdatedBook extends Component {
 
   getDetailsBook = async () => {
     let res = await service.getDetailsBook(this.props.match.params.id);
-    console.log(res, "respuesta")
     this.setState({
       title: res.title,
       year: res.year,
@@ -33,7 +32,6 @@ class UpdatedBook extends Component {
     try {
       const res = await service.handleUpload(uploadData);
       this.setState({ poster: res.secure_url });
-      console.log(res.secure_url, "SECURE_URL")
     } catch (error) {
       console.log("Error while uploading the file: ", error);
     }
@@ -66,7 +64,6 @@ class UpdatedBook extends Component {
   };
 
   render() {
-    console.log(this.state, "ESTADO")
     return (
       <div className="container3" style={{backgroundImage: `url(${this.state.poster})`, backgroundSize: `cover`, backgroundPosition: `center`, backgroundRepeat: `no-repeat`}}>
         <form onSubmit={(e) => this.handleSubmit(e)} className="edit-form">

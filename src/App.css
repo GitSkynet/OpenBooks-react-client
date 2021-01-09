@@ -39,15 +39,89 @@ h1, h2, h3, h4, h5, h6, p, span {
     padding: 0 2rem;
 }
 
-.container-home{
-    width: 100%;
-    height: 100%;
-	display: column;
+/* NEWSHOME2 */
+
+.news-container{
+	background-image: url('https://openlibra.blob.core.windows.net/assets/thoughts/brueghel.jpg');
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap :7rem;
 }
+
+.search-div{
+	padding: 10px 30px;
+	justify-content: flex-start;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+}
+
+.news-container img{
+	width: 336px;
+}
+
+.news-container h5{
+	font-size: 60px;
+	font-weight: 900;
+	text-align: center;
+}
+
+/* END NEWSHOME2 */
+
+/* CARD RESULTSOPENLIBRA */
+
+.card{
+	width: 180px;
+	height: 250px;
+	border-radius: 10px !important;
+	border: 1px solid rgba(0,0,0,.125) !important;
+	margin: 10px auto;
+	background-color: #fff0 !important;
+}
+
+.card-body{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	padding: 2px;
+	color: rgb(255, 255, 255);
+	opacity: 0;
+	position: absolute;
+	text-align: center;
+	overflow:hidden;
+	white-space:wrap;
+	text-overflow: ellipsis;
+}
+
+.card img{
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	border: transparent;
+}
+
+
+.card-body:hover{
+	height: 100%;
+	border-radius: 10px;
+	background-color: rgba(88, 84, 84, 0.493);
+	opacity: 1;
+}
+
+.card-body h5{
+	width: 90%;
+	overflow:hidden;
+	white-space: wrap;
+	text-overflow: ellipsis;
+}
+
+/* CARD RESULTSOPENLIBRA */
 
 .img{
 	display: flex;
@@ -72,7 +146,7 @@ form{
 
 .form-control {
     display: block;
-    width: 200px !important;
+    width: 100% !important;
     height: calc(1.5em + .75rem + 2px);
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -81,9 +155,10 @@ form{
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da00 !important;
+    border: 1px solid #ced4da;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    max-width: 500px;
 }
 
 .login-content img{
@@ -142,7 +217,6 @@ form{
 	bottom: -2px;
 	width: 0%;
 	height: 2px;
-	background-color: #38d39f;
 	transition: .4s;
 }
 
@@ -330,45 +404,6 @@ a:hover{
 }
 
 /* Books cards */
-.card{
-	width: 180px;
-	height: 250px;
-	border: 1px solid rgb(180, 22, 22);
-	border-radius: 10px;
-	margin: 10px auto;
-}
-
-.card-body{
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-end;
-	align-items: center;
-	width: 100%;
-	padding: 2px;
-	background-color: rgba(221, 206, 206, 0.205);
-	color: rgb(255, 255, 255);
-	opacity: 0;
-	position: absolute;
-	text-align: center;
-	overflow:hidden;
-	white-space:wrap;
-	text-overflow: ellipsis;
-}
-
-.card-body:hover{
-	width: 100%;
-	height: 100%;
-	background-color: rgba(88, 84, 84, 0.493);
-	opacity: 1;
-}
-
-.card-body h5{
-	width: 90%;
-	overflow:hidden;
-	white-space: wrap;
-	text-overflow: ellipsis;
-}
 
 .google-results{
 	width: 100%;
@@ -566,7 +601,6 @@ a:hover{
 	width: 100%;
 	height: 200px;
 	background-image: url("https://raw.githubusercontent.com/GitSkynet/OpenBooks/master/img/libros.jpg");
-	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -650,19 +684,6 @@ a:hover{
 	padding: 10px;
 }
 
-.search-input-section{
-	padding: 40px;
-	width: 100%;
-	height: 300px;
-	background-color: #1158a0;
-	color: white;
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: center;
-	flex-wrap: wrap;
-	background-image: url("https://raw.githubusercontent.com/GitSkynet/OpenBooks/master/img/libros.jpg");
-}
 
 .input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child) {
     border-top-right-radius: 0;
@@ -1797,7 +1818,6 @@ footer {
 
 /* SIMPLE SLIDER*/
 
-
 .div-slider{
 	display: flex !important;
 	flex-direction: column !important;
@@ -1821,7 +1841,30 @@ footer {
 	cursor: pointer;
 	background-position: center;
 	background-size: cover;
+	border-radius: 10px;
 }
+
+.div-slider img:hover{
+	margin: 10px;
+	width: 170px;
+	height: 222px;
+	transition: ease-in step-start;
+	bottom: 25px;
+	cursor: pointer;
+	background-position: center;
+	background-size: cover;
+	border-radius: 10px;
+}
+.prueba1 {
+    width: 180px;
+    height: 55px;
+    padding: 10px;
+    white-space: wrap !important;
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+}
+
+/* END SIMPLESLIDER */
 
 .home-slider{
 	display: flex;
@@ -1862,9 +1905,6 @@ footer {
 	}
 }
 
-.div-slider h6{
-	margin-top: 5px;
-}
 
 .slick-dots {
     bottom: 15px;
@@ -1902,3 +1942,44 @@ footer {
 }
 
 /* END NAVBAR OPENLIBRA PAGE SUPERHOME */
+
+
+/* SUPERHOME COMPONENT */
+
+.results-superhome {
+    display: flex;
+    flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.results-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+/* END SUPERHOME COMPONENT */
+
+.results-bookpage{
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid white;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	padding: 5px;
+	margin: 0 30px;
+	font-weight: 700;
+}
+
+.results-bookpage h5{
+	font-weight: 700;
+	margin: 0;
+	padding: 2px;
+}
+
+

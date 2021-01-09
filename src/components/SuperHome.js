@@ -8,14 +8,14 @@ class SuperHome extends Component {
         name: 'libros_programacion',
         pagina: 0,
         books: [],
-        nicename: 'JavaScript',
+        count: 0
     }
 
     getAllBooks = async () => {
         const name = this.state.name;
-        const pagina = this.state.pagina;
-        const allBooks = await service.getSubCategoriesFromApi(name, pagina)
-        this.setState({ books: allBooks })
+        const count = await service.getCountItems(name);
+        const allBooks = await service.getSubCategoriesFromApi(name);
+        this.setState({ books: allBooks, count: count});
     }
 
     scroll = () => {
@@ -25,10 +25,9 @@ class SuperHome extends Component {
     
     ChangeName = (name2) => {
         const name = this.state.name;
-        const newName = name.replace(/_/g, " ");
         if(name){
-            this.setState({ name: name2, nicename: newName});
-        }  
+            this.setState({ name: name2});  
+        }
     }
     
     componentDidMount = () =>{
@@ -39,76 +38,94 @@ class SuperHome extends Component {
         this.getAllBooks();
     }
 
-
   render() {
       const books = this.state.books;
+      const name = this.state.name.replace(/_/g, ' ').toUpperCase();
     return (
         <>
-        <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">{this.state.nicename}</Navbar.Brand>
+        <Navbar id="prueba" bg="dark" expand="lg" style={{  background:' #24282f !important'}}>
+            <Navbar.Brand  href="#home">{name}</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavDropdown title="Control Version" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.ChangeName("mysql_bases_de_datos")}>My SQL</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                    {/* <-- Category Version Control dropdown --> */}
+                    <NavDropdown title="Control Versiones" id="basic-nav-dropdown">
+                        <NavDropdown.Item onClick={() => this.ChangeName("control_de_versiones")}>All results</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("git")}>Git</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("mercurial")}>Mercurial</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("subversion")}>Subversion</NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown title="Data Bases" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.ChangeName("mysql_bases_de_datos")}>My SQL</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("nosql")}>No SQL</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("postgresql")}>PostGree SQL</NavDropdown.Item>
+                    {/* <-- Category BBDD dropdown --> */}
+                    <NavDropdown title="BBDD" id="basic-nav-dropdown">
+                        <NavDropdown.Item onClick={() => this.ChangeName("bases_de_datos_general")}>All results</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("mysql_bases_de_datos")}>MySQL</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("nosql")}>NoSQL</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("postgresql")}>PostGreSQL</NavDropdown.Item>
                     </NavDropdown>
-                    <NavDropdown title="Programming" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.ChangeName("bases_de_datos")}>Database</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown>
+                    {/* <-- Category Web Development dropdown --> */}
                     <NavDropdown title="Web Development" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.ChangeName("mysql_bases_de_datos")}>My SQL</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("desarrollo_web")}>All results</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("accesibilidad_usabilidad")}>Accesibilidad / Usabilidad</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("desarrollo_web_css")}>CSS</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("html")}>HTML</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("diseño_web")}>Diseño Web</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("herramientas_desarrollo_web")}>Herramientas</NavDropdown.Item>
+
+                    </NavDropdown>
+                    {/* <--! Category Programming dropdown !--> */}
+                    <NavDropdown title="Programming" id="basic-nav-dropdown">
+                        <NavDropdown.Item onClick={() => this.ChangeName("libros_programacion")}>All results</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item onClick={() => this.ChangeName("net")}>Net</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("ada")}>ADA</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("algoritmos")}>Algoritmos</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("c")}>C programming</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("c-plus-plus")}>C++</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("c-sharp")}>C Sharp</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("cloud-computing-libros_programacion")}>Cloud Computing</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("dispositivos_moviles")}>Mobile Development</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("hardware-libros_programacion")}>Hardware</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("haskell")}>Haskell</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("herramientas")}>Herramientas</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("programacion_java")}>Java</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("programacion_javascript_ajax")}>JavaScript</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("jquery_libros_programacion")}>JQuery</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.ChangeName("programacion_python")}>Python</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
         <div className="book-store">
             <div className="popular-books">
-            {/* <NavDropdown title={this.state.name} id="basic-nav-dropdown" className="book-types">
-                    <NavDropdown.Item onClick={() => this.ChangeName("bases_de_datos")}>Bases de datos</NavDropdown.Item>
-                    <NavDropdown.Item onClick={() => this.ChangeName("programacion_php")}>PHP</NavDropdown.Item>
-                    <NavDropdown.Item onClick={() => this.ChangeName("desarrollo_web")}>Web</NavDropdown.Item>
-                    <NavDropdown.Item onClick={() => this.ChangeName("programacion_java")}>Java</NavDropdown.Item>
-                    <NavDropdown.Item onClick={() => this.ChangeName("pet-python-entre-todos")}>Python</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={() => this.ChangeName("javascript")}>Separated link</NavDropdown.Item>
-                </NavDropdown>          */}
-            <div className="book-cards">
-                {books?.map((book, key= this.state.books.ID) => {
-                    return (
-                        <BookCard 
-                            key= {key}
-                            content={book.content_short}
-                            image={book.cover}
-                            title={book.title}
-                            publisher={book.publisher}
-                            date={book.publisher_date}
-                            author={book.author}
-                            preview={`/details/${book.ID}`}
-                            preview_name={'Details'}
-                        />
-                )
-                })}            
+                <div className="results-superhome">
+                    <h5>{this.state.count} results</h5>
+                    {this.state.count > 10 ?(<>
+                        <a href={(`/books/openlibra/${this.state.name}`)}>
+                            View all 
+                        </a>
+                        </>):(<></>)}
+                </div>
+                <div className="book-cards">
+                    {books?.map((book, key= this.state.books.ID) => {
+                        return (
+                            <BookCard 
+                                key= {key}
+                                content={book.content_short}
+                                image={book.cover}
+                                title={book.title}
+                                publisher={book.publisher}
+                                date={book.publisher_date}
+                                author={book.author}
+                                preview={`/details/${book.ID}`}
+                                preview_name={'Details'}
+                            />
+                    )
+                    })}            
+                </div>
             </div>
-        </div>
         </div>
     </>
     );

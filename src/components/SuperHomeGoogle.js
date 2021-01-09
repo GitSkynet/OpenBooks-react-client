@@ -13,7 +13,6 @@ class SuperHome extends Component {
         const name = this.state.name;
         let books = await service.getGoogleBooks(name);
         this.setState({ books: books });
-        console.log(this.state.books, "!!!books!!");
       };
 
     componentDidMount = () =>{
@@ -44,7 +43,7 @@ class SuperHome extends Component {
                             date={book.publishedDate}
                             amount={book.saleInfo.listPrice?.amount}
                             money={book.saleInfo.listPrice?.currencyCode}
-                            author={book.author}ç
+                            author={book.author}
                     />
                 )
                 })}            

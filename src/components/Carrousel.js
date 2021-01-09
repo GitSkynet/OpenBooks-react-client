@@ -8,14 +8,6 @@ class Carrousel extends Component {
     image: ""
   }
 
-  funcion = () => {
-    console.log(document.getElementById('query').innerHTML);
-  }
-
-  componentDidUpdate = () => {
-    this.funcion();
-  }
-
   render() {
     return (
       <div>
