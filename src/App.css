@@ -635,7 +635,6 @@ a:hover{
 	box-shadow: 0 0 10px rgba(-100, -100, -100, 10.7);
 	background-image: url('https://image.tmdb.org/t/p/w1920_and_h800_multi_faces_filter(duotone,190235,ad47dd)/lMnoYqPIAVL0YaLP5YjRy7iwaYv.jpg');
 	padding: 10px;
-	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 
 .home-section2{
@@ -1284,7 +1283,6 @@ footer {
 	display: flex;
 	 flex-direction: column;
 	 max-width: 1400px;
-	 margin-top: 35px;
 	 height: 100%;
 	 background-color: var(--page-bg-color);
 	 overflow: hidden;
@@ -1880,3 +1878,27 @@ footer {
     display: block;
     padding: 0;
 }
+
+/* NAVBAR OPENLIBRA PAGE SUPERHOME */
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: right !important;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+/* END NAVBAR OPENLIBRA PAGE SUPERHOME */

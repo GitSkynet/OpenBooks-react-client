@@ -4,8 +4,10 @@ class Service {
   constructor() {
     this.service = axios.create({
       baseURL: process.env.REACT_APP_API_URI,
+      noURL: process.env.REACT_APP_GOOGLE_KEY,
       //withCredentials: true
     });
+
   }
 
   ////////////////////////////BOOKS FROM NY DATABASE///////////////////////////////////////
@@ -94,6 +96,19 @@ class Service {
     }
   }
 
+    //GET Subcategories from API
+    getSubCategoriesFromApi = async ( name, pagina= 0) => {
+      const page = pagina*10;
+      try {
+        const counter = await axios.get(`https://www.etnassoft.com/api/v1/get/?subcategory=${name}&count_items=true`);
+        const count = counter.data.num_items;
+        const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?subcategory=${name}&num_items=${count}&results_range=${page},10`);
+        return (books.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
   //Search funtion over OpenLilbra API
   searchBook = async (name) => {
     try {
@@ -115,16 +130,17 @@ class Service {
     }
   }
 
-  ////////////////////////////END BOOKS FROM OPENLIBRA API///////////////////////////////////
+ ////////////END BOOKS FROM OPENLIBRA API//////////////////
 
-  //<<<<<<<<<<<<<<<<<<<<<<<<<<<----------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  ////////////////////////////BOOKS FROM GOOGLEBOOKS API///////////////////////////////////////
+////////////////BOOKS FROM GOOGLEBOOKS API//////////////////
 
   //GET Route from Google Books API
   getGoogleBooks = async (name) => {
+    console.log(process.env.REACT_APP_GOOGLE_KEY)
     try {
-      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${name}&key=AIzaSyBzD61cSMcd6Si4XKfkchWaHRiXrmlFGFU`);
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${name}&key=${process.env.REACT_APP_GOOGLE_KEY}`);
+      console.log(res)
       return res.data.items;              
     } catch (error) {
       console.log(error)
@@ -133,7 +149,7 @@ class Service {
 
   searchGoogle = async (query) => {
     try {
-      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyBzD61cSMcd6Si4XKfkchWaHRiXrmlFGFU&maxResults=40`);
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${process.env.REACT_APP_GOOGLE_KEY}`);
       console.log(res, "cliente respuesta")
       return res; 
     }catch (error) {

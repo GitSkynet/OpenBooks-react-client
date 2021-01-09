@@ -30,17 +30,6 @@ class SuperHome extends Component {
     return (
     <div className="book-store">
         <div className="popular-books">
-            <div className="main-menu">
-                <div className="genre">Most downloaded on <span>{this.state.name}</span></div>
-                <ul className="book-types">
-                    <li onClick={() => this.changeName("javascript")} className="book-type active">JavaScript</li>
-                    <li onClick={() => this.changeName("bases_de_datos")} className="book-type">Bases de datos</li>
-                    <li onClick={() => this.changeName("php")} className="book-type">{" "}PHP</li>
-                    <li onClick={() => this.changeName("web")} className="book-type">{" "}Web</li>
-                    <li onClick={() => this.changeName("java")} className="book-type">{" "}Java</li>
-                    <li onClick={()=> this.changeName("python")} className="book-type">{" "}Python</li>
-                </ul>
-            </div>
             <div className="book-cards">
                  {this.state.books?.map((book, index) => {
                     return (
