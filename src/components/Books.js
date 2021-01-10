@@ -64,10 +64,10 @@ class Books extends Component {
                     <h5>{this.state.count} results</h5>
                 </div>
                 <div className="book-cards">
-                    {books?.map((book) => {
+                    {books?.map((book, key= book.ID) => {
                         return (
                             <BookCard 
-                                id={book.ID}
+                                key={key}
                                 title={book.title}
                                 image={book.cover}
                                 content={book.content_short}

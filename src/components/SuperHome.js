@@ -100,7 +100,7 @@ class SuperHome extends Component {
         </Navbar>
         <div className="book-store">
             <div className="popular-books">
-                <div className="results-superhome">
+                <div className="results-home">
                     <h5>{this.state.count} results</h5>
                     {this.state.count > 10 ?(<>
                         <a href={(`/books/openlibra/${this.state.name}`)}>

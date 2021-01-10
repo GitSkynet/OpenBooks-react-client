@@ -9,15 +9,18 @@ import service from '../api/service';
 
 class Home extends Component {
   state={
-    filteredBooks: []
+    filteredBooks: [],
+    count: 0
   } 
   
   //Search Function
    searchOpenLibra = async (searchTerm) => {
     const searchedTerm = searchTerm.toLowerCase();
+    const count = await service.getCountSearch(searchedTerm);
+    console.log(count, "cuenta?")
     const filteredList = await service.searchBook(searchedTerm);
     if (searchTerm) {
-        this.setState({ filteredBooks: filteredList })
+        this.setState({ filteredBooks: filteredList, count: count })
     }
   }
   
@@ -33,10 +36,11 @@ class Home extends Component {
         <SearchBar
           filterSearch={this.searchOpenLibra}
           clearSearch={this.clearSearch}
+          count={this.state.count}
         />
         <div className="google-results">
           {this.state.filteredBooks?.map((book, index) => {
-            return <ResultsOpenLibra key={index} theBook={book} />
+            return <ResultsOpenLibra key={index} theBook={book} />             
           })}
         </div>
         <div>

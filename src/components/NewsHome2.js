@@ -33,8 +33,7 @@ class NewsHome2 extends Component {
                 <SearchBar
                     filterSearch={this.searchOpenLibra}
                     clearSearch={this.clearSearch}
-                    count={this.state.count}
-                    name={this.state.name}
+                    count={this.state.count}                   
                 />
             </div>
             <div className="google-results">

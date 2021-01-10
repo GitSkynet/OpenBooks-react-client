@@ -5,8 +5,10 @@ class SearchBar extends Component {
 
     handleChange = (event) => {
         let { value } = event.target
+        console.log(value, "VALUE!!")
         if (value) {
             this.props.filterSearch(value)
+            this.setState({value: value})
         } else {
             this.props.clearSearch()
         }
@@ -14,21 +16,19 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <>
             <div className="search-div">
                 <InputGroup onChange={(e) => this.handleChange(e)} type="text" name="name" className="mb-3">
                     <Form inline>
-                        <FormControl type="text" placeholder={`Search book`} className="mr-sm-2" style={{marginRight: '0', borderRadius: '10px', boxShadow: 'rgb(19, 12, 12) 0px 7px 30px 12px'}}/>
+                        <FormControl type="text" placeholder={`Search book`} className="mr-sm-2" style={{marginRight: '0', borderRadius: '10px', borderTopRightRadius: '0px', borderBottomRightRadius: '0px'}}/>
+                        {this.props.count === 0 ? 
+                        (<>
+                            <Button className="button-search" type="text"><img style={{width: '20px'}} src="https://res.cloudinary.com/ytyt/image/upload/v1610278437/search_p5dc7v.png" alt="search"/></Button>
+                        </>):(<>
+                            <Button href={`/books/openlibra/${this.state?.value}`} className="button-search" type="text">{this.props.count} results</Button>
+                            </>)}
                     </Form>
                 </InputGroup>
             </div>
-                <div className="results-div" style={{fontSize: '16px', fontWeight: '700'}}>
-                    {this.props.count === 0 ? (<>
-                    </>):(<>
-                        <Button>{this.props.count} results</Button>
-                    </>)}
-                </div>
-                </>
         )
     }
 }
