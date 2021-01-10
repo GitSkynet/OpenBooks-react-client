@@ -5,7 +5,7 @@ class BookCard extends Component {
   
   render() {
     return (
-      <div className="book-card">
+      <div className="book-card" key={this.props.index}>
         <div className="content-wrapper">
           <div className="content-wrapper2">
             <img src={this.props.image} alt="logos" className="book-card-img"/>

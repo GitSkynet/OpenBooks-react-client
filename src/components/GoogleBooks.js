@@ -37,7 +37,7 @@ class GoogleBooks extends Component {
           />
         </div>
         <div className="google-results">
-          {this.state.filteredBooks?.map((book, index) => {
+          {this.state.filteredBooks?.map((book, index = book.id) => {
             return <SearchResult key={index} theBook={book} />;
           })}
         </div>

@@ -109,10 +109,10 @@ class SuperHome extends Component {
                         </>):(<></>)}
                 </div>
                 <div className="book-cards">
-                    {books?.map((book, key= this.state.books.ID) => {
+                    {books?.map((book, index= this.state.books.ID) => {
                         return (
                             <BookCard 
-                                key= {key}
+                                key= {index}
                                 content={book.content_short}
                                 image={book.cover}
                                 title={book.title}

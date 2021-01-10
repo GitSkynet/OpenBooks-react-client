@@ -9,7 +9,8 @@ class Books extends Component {
         pagina: 0,
         category: [],
         name: "",
-        count: 0
+        count: 0,
+        array: [1,2,3,4,5,6,7,8,9,10]
     }
 
     scroll = () => {
@@ -35,12 +36,17 @@ class Books extends Component {
 
     paginaSiguiente = () => {
         let pagina = this.state.pagina;
-        let count = this.state.books.length;
+        let length = this.state.books.length;
+        let count = this.state.count;
+        console.log(count, "contador PS")
         if (count===0) {
             this.setState({ pagina: 0 });
         } else {
+            const counter = count - length;
+            console.log(count, "count resta")
+            console.log(length, "length")
             pagina++;
-            this.setState({ pagina: pagina });
+            this.setState({ pagina: pagina, count: counter });
         }
         this.scroll();
     }
@@ -63,23 +69,44 @@ class Books extends Component {
                 <div className="results-bookpage">
                     <h5>{this.state.count} results</h5>
                 </div>
+                {this.state.count ? (
+                <>
+                    <div className="book-cards">
+                        {books?.map((book, key= book.ID) => {
+                            return (
+                                <BookCard 
+                                    key={key}
+                                    title={book.title}
+                                    image={book.cover}
+                                    content={book.content_short}
+                                    publisher={book.publisher}
+                                    date={book.publisher_date}
+                                    author={book.author}
+                                    preview={`/details/${book.ID}`}
+                                    preview_name={'Details'}
+                                />
+                            )
+                        })}
+                    </div>
+                </>):(
+                <>
                 <div className="book-cards">
-                    {books?.map((book, key= book.ID) => {
-                        return (
-                            <BookCard 
-                                key={key}
-                                title={book.title}
-                                image={book.cover}
-                                content={book.content_short}
-                                publisher={book.publisher}
-                                date={book.publisher_date}
-                                author={book.author}
-                                preview={`/details/${book.ID}`}
-                                preview_name={'Details'}
-                            />
-                        )
-                    })}
-                </div>
+                        {this.state.array.map((index) => {
+                            return (
+                                <BookCard style={{minWidth: '300px'}} 
+                                    key={index}
+                                    title={'Loading Title...\n\n\n'}
+                                    image={'https://i.stack.imgur.com/1hvpD.jpg'}
+                                    content={'Loading Content...\n\n\n'}
+                                    publisher={'Loading publisher...\n\n\n\n'}
+                                    date={'Loading...\n\n\n'}
+                                    author={'Loading...\n\n\n'}
+                                    preview_name={'Loading...\n\n\n'}
+                                />
+                            )
+                        })}
+                    </div>
+                </>)}      
                 <div className="pagination">
                     <Paginacion
                         paginaAnterior={this.paginaAnterior}

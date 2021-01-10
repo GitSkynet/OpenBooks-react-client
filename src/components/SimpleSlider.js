@@ -26,22 +26,30 @@ class SimpleSlider extends Component {
     var settings = {
       dots: true,
       infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      speed: 300,
+      slidesToShow: 3,
+      slidesToScroll: 3,
       initialSlide: 0,
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 3024,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 5,
+            slidesToScroll: 5,
             infinite: true,
             dots: true
           }
         },
         {
-          breakpoint: 600,
+          breakpoint: 834,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 648,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,

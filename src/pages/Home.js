@@ -62,6 +62,7 @@ class Home extends Component {
             <a href={("/books/openlibra/programacion_php")}>View all results</a>
           </div>
           <div>
+            {/* SlidersHome */}
             <SimpleSlider 
               name={'programacion_php'}
             />
