@@ -10,15 +10,13 @@ class SimpleSlider extends Component {
 
   getAllBooks = async () => {
       const name = this.props.name;
-      const allBooks = await service.getBooksFromApi(name);
+      const count = 0;
+      const allBooks = await service.getBooksFromApi(name, count);
       this.setState({ books: allBooks });
+      console.log(this.state.books,"<<<")
   };
 
   componentDidMount = () =>{
-    this.getAllBooks();
-  }
-
-  componentDidUpdate = () =>{
     this.getAllBooks();
   }
 
@@ -29,13 +27,14 @@ class SimpleSlider extends Component {
       speed: 300,
       slidesToShow: 3,
       slidesToScroll: 3,
-      initialSlide: 0,
+      initialSlide: 1,
       responsive: [
         {
           breakpoint: 3024,
           settings: {
-            slidesToShow: 5,
-            slidesToScroll: 5,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            initialSlide: 0,
             infinite: true,
             dots: true
           }
@@ -45,7 +44,7 @@ class SimpleSlider extends Component {
           settings: {
             slidesToShow: 4,
             slidesToScroll: 4,
-            initialSlide: 2
+            initialSlide: 0,
           }
         },
         {
@@ -53,14 +52,15 @@ class SimpleSlider extends Component {
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3,
-            initialSlide: 2
+            initialSlide: 0,
           }
         },
         {
           breakpoint: 480,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 2
+            slidesToScroll: 2,
+            initialSlide: 0,
           }
         }
       ]

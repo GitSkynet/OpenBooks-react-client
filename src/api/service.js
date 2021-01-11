@@ -93,12 +93,9 @@ class Service {
   }
 
   //GET Route
-  getBooksFromApi = async ( name, pagina= 0) => {
-    const page = pagina*10;
+  getBooksFromApi = async ( name, count) => {
     try {
-      const counter = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&count_items=true`);
-      const count = counter.data.num_items;
-      const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&num_items=${count}&results_range=${page},10`);
+      const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&results_range=${count},10`);
       return (books.data)
     } catch (error) {
       console.log(error)

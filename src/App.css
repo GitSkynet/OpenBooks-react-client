@@ -447,7 +447,6 @@ a:hover{
 
 .container-details{
 	max-width: 100%;
-	margin: 10px auto;
 }
 
 .details-div{
@@ -464,8 +463,9 @@ a:hover{
 	justify-content: center;
 	align-items: center;
 	padding: 20px 50px;
-
+	z-index: 1;
 }
+
 
 .details{
 	padding: 10px 20px;
@@ -485,20 +485,32 @@ a:hover{
 	width: 270px;
 	height: 390px;
 	border-radius: 15px;
-	box-shadow: 3px 10px 30px grey;
-
+	box-shadow: 0px 0px 14px rgb(198, 64, 26);
 }
 
 .details-categories {
-    width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     justify-content: center !important;
+	margin: 20px 0px;
+	padding: 10px 15px;
+    background-color: #2f3235;
+    border-radius: 15px;
+    box-shadow: 0px 0px 14px rgb(198, 64, 26);
 }
 
 .details-title{
 	padding: 5px 20px;
+}
+
+.tags-categories{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
 }
 
 .details-content p{
@@ -546,10 +558,6 @@ a:hover{
 	vertical-align: center;
 	padding: 5px;
 	padding-top: 5px;
-}
-	
-.parraf{
-	font-size: small;
 }
 
 @media(max-width: 500px){
@@ -657,13 +665,6 @@ a:hover{
 	width: 120px;
 }
 
-.details-categories{
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-}
 
 .each-category{
 	background-color: #dd1515;
@@ -672,10 +673,6 @@ a:hover{
 	vertical-align: center;
 	padding: 5px;
 	padding-top: 5px;
-}
-
-.parraf{
-	font-size: small;
 }
 
 /* HOME */
@@ -863,9 +860,8 @@ a:hover{
 }
 
 
-  /* PROFILE SECTION  */
-
-.profile-section1{
+  /* PROFILE STYLES SECTION  */
+  .container-profile{
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -874,7 +870,7 @@ a:hover{
 	flex-wrap: wrap;
 }
 
-.profile-content{
+.header-profile{
 	width: 100%;
 	height: 280px;
 	display: flex;
@@ -882,43 +878,34 @@ a:hover{
 	justify-content: flex-start;
 	text-align: center;
 	background-image: url("https://i.imgur.com/ca5GXkg.jpg");
-	-webkit-clip-path: polygon(0% 0px, 100% 0px, 100% 83%, 0% 100%);
-	clip-path: polygon(0% 0px, 100% 0px, 100% 83%, 0% 100%);
 	background-position: center;
 	background-size: cover;
 	z-index: 0;
 }
 
-.jumbotron {
-    padding: 2rem 1rem;
-	margin-bottom: 2rem;
-	background-color: #e9ecef;
-	border-radius: .3rem;
-	z-index: 1;
-	margin-top: -100px;
-	position: absolute;
+.profile-favorites{
+	width: 100%;
 }
 
-.jumbotron h1{
-	color: black !important;
+.target-profile{
+	border-radius: 10px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	margin: 30px 10px;
+	padding: 10px 15px;
+	background-color: #2f3235;
+	border-radius: 15px;
+	box-shadow: 0px 0px 14px rgb(198, 64, 26);
 }
 
-.jumbotron p{
-	color: black !important;
+.target-profile h3 {
+	padding-top: 10px;
+	font-size: 2.75rem;
+	font-weight: 800;
 }
 
-.image:hover {
-    transform: scale(1.04);
-}
-.image {
-    width: 160px;
-    margin-top: -88px;
-    border-radius: 50%;
-    box-shadow: 0px 1px 7px 2px #2f2f2f;
-    border-bottom: 1px solid #dcddde;
-    object-fit: cover;
-	transition: 0.3s cubic-bezier(.45,.05,.55,.95);
-}
+/* END PROFILE STYLES SECTION */
 
 /* CSS OF THE FOOTER OF ALL THE PAGES ON THE WEB */
 footer {
@@ -1688,14 +1675,14 @@ footer {
 	 width: 160px;
 	 height: 212px;
 	 margin-top: -50px;
-	 border-radius: 2px;
-	 box-shadow: 0px 1px 7px 2px #c7c9d3;
+	 border-radius: 10px;
 	 border-bottom: 1px solid #dcddde;
 	 object-fit: cover;
 	 transition: 0.3s ease;
 }
  .book-card-img:hover {
 	 transform: scale(1.04);
+	 box-shadow: 0px 0px 14px rgb(198, 64, 26);
 }
  .card-content {
 	 color: var(--body-color);
@@ -1762,7 +1749,7 @@ footer {
 	 position: absolute;
 	 background-color: #8f98a9;
 	 background-color: #aaaebc;
-	 box-shadow: 0 -6px 0 0 #aaaebc, 0 6px 0 0 #aaaebc;
+	 box-shadow: 0px 0px 14px rgb(198, 64, 26);
 	 width: 4px;
 	 height: 4px;
 	 border: 0;
@@ -1913,6 +1900,7 @@ footer {
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
+	box-shadow: 0px 0px 14px rgb(198, 64, 26);
 }
 .prueba1 {
     width: 180px;
@@ -2038,16 +2026,16 @@ footer {
 
 /* END SUPERHOME COMPONENT */
 
-.results-bookpage{
-	width: 100%;
-	height: 50px;
-	border-bottom: 1px solid white;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	padding: 5px;
-	margin: 0 30px;
-	font-weight: 700;
+.results-bookpage {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 0 30px;
+    font-weight: 700;
 }
 
 .results-bookpage h5{

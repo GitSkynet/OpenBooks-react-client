@@ -43,13 +43,12 @@ class DetailsBook extends Component {
                     </div>
                 </div>
                 <div className="details-content">
-                    <div>
-                        <p>Descripción : <br/> {book.content}</p>
-                    </div>
+                    <p>Descripción : <br/> {book.content}</p>
                     <div className="align-delete">
                         <Button className="download" href={book.url_download} target="_blank" rel="noopener noreferrer">Download</Button>
                     </div>
-                    <div className="details-categories">
+                    <div className="tags-categories">
+                        <div className="details-categories">
                         <div className="details-title">
                         <h3>Similar Categories</h3>
                         </div>
@@ -65,7 +64,7 @@ class DetailsBook extends Component {
                             })}
                         </div>
                     </div>
-                    <div className="details-categories">
+                        <div className="details-categories">
                         <div className="details-title">
                             <h3>Similar Tags</h3>
                         </div>
@@ -80,6 +79,7 @@ class DetailsBook extends Component {
                                 )
                             })}
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
