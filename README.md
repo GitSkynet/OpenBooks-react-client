@@ -1,43 +1,38 @@
 # OpenBooks V2
 
 React - Client OpenBooks
-Explicaión de las funcionalidades del sitio web, qué ofreces y en qué vas a seguir trabajando e implementando en un futuro NO muy lejano
+Cuando realizé el bootcamp de IronHack de desarrollo web Full Stack, realizé mi primer proyecto sobre libros. Tenía la idea de poder aglutinar en un solo sitio todos los recursos posibles sobre informática, hardware, ciencia, lenguajes de programación, bases de datos... De ahí nació la idea de OpenBooks. Tener un sitio web donde siempre poder tener a mano recursos gratis y de calidad para descargarlos directamente a tu dispositivo o leerlos online. Y todo gracias a las APIS de OpenLibra, Google Books y mi propia base de datos, donde poco a poco voy añadiendo más contenido cada día 
 
 ## Comenzando 🚀
 ### Instalación 🔧
-Para poder ver y probar este proyecto en tu ordenador local, haz Fork tanto de este repositorio como el [repositorio del cliente](https://github.com/GitSkynet/OpenBooks-react-client)
+Para poder ver y probar este proyecto en tu ordenador local, haz Fork tanto de este repositorio como el [repositorio del servidor](https://github.com/GitSkynet/OpenBooks-react-server)
 
-Antes de poner el servidor en marcha, debemos crear un archivo y descargar las pedendencias.
-Crea  un **archivo .env** en el directorio raíz, donde añadiremos las siguientes keys:
+Antes de poner el servidor en marcha, debemos crear un par de archivos y descargar las pedendencias.
 
-### Keys 📋
+Crea  un **archivo .env.production y un archivo .env.development** en el directorio raíz, donde añadiremos:
 
+### Key 📋
+_En el archivo .env.development crea esta key con esta dirección_
 ```
-* SECRET_SESSION=<nombre(anithing)>
-* PUBLIC_DOMAIN=http://localhost:3000
-* MONGODB_URI=<url_mongoDB local/atlas>
-* DATABASE=<nombre de tu base de datos>
-* PORT=4000
-* SECRET_SESSION=<nombre>
-* cloudName=<cloudinary>
-* cloudKey=<cloudinary>
-* cloudSecret=<cloudinary>
+* REACT_APP_API_URI=http://localhost:4000
+```
+_En el archivo .env.production crea esta key con la dirección de tu host (heroku, firebase, servidor propio, etc)_
+```
+* REACT_APP_API_URI=<servidor aquí>
 ```
 
+_Una vez los archivos creados, ya estamos listos para instalar las dependencias y levantar el servidor_
 
-_Una vez creado nnuestro archivo .env, instalamos todas las dependencias y ejectuamos el servidor_
-
+_Instalamos todas las dependencias:_
 ```
 npm install
 ```
-
-_Para ejecutar el servidor:_
-
+_Levantamos el servidor_
 ```
-npm run dev
+npm start
 ```
 
-_Ya tenemos nuestro backend escuchando en http://localhost:4000 y conectado a mongoDB_
+<!-- _Ya tenemos nuestro backend escuchando en http://localhost:4000 y conectado a mongoDB_
 
 ## Realizando el deploy en Heroku ⚙️
 
@@ -97,4 +92,4 @@ También puedes mirar mi [portfolio](https://portfoliocurtido.herokuapp.com/) do
 Este proyecto está bajo Licencia libre - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 ---
-⌨️ con ❤️ por [Carlos Curtido](https://github.com/GitSkynet) ❤️
+⌨️ con ❤️ por [Carlos Curtido](https://github.com/GitSkynet) ❤️ -->
