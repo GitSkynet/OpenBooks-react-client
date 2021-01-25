@@ -151,8 +151,7 @@ class Service {
   //GET Route from Google Books API
   getGoogleBooks = async (name) => {
     try {
-      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${name}&key=${process.env.REACT_APP_GOOGLE_KEY}`);
-      console.log(res)
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${name}&key=AIzaSyBpHucfDaQ0Otfjykymo8dYSYaJrsYrP54`);
       return res.data.items;              
     } catch (error) {
       console.log(error)
@@ -161,7 +160,7 @@ class Service {
 
   searchGoogle = async (query) => {
     try {
-      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${process.env.REACT_APP_GOOGLE_KEY}`);
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyBpHucfDaQ0Otfjykymo8dYSYaJrsYrP54`);
       return res; 
     }catch (error) {
       console.log(error);
@@ -169,6 +168,8 @@ class Service {
   };
 
   ////////////////////////////END BOOKS FROM GOOGLEBOOKS API/////////////////////////////////
+  
+
 }
 
 const axiosRequestFunctions = new Service();

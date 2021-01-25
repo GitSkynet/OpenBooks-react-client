@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 
 class searchResult extends Component {
     render() {
+        console.log(this.props.theBook)
         const theBook = this.props.theBook;
         return (
             <div key={theBook.id} className="card">
@@ -10,8 +11,7 @@ class searchResult extends Component {
                 <div className="card-body">
                     <h5>{theBook.volumeInfo.title}</h5>
                     <h6>{theBook.author}</h6>
-                    <Button href={`/details/${theBook.id}`} 
-                    className="primary" variant="primary" size="sm">Details</Button>
+                    <Button href={theBook.volumeInfo.previewLink} className="book-by">Preview</Button>
                 </div>
             </div>
         )

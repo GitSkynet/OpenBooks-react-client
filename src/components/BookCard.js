@@ -5,7 +5,7 @@ class BookCard extends Component {
   
   render() {
     return (
-      <div className="book-card" key={this.props.index}>
+      <div className="book-card">
         <div className="content-wrapper">
           <div className="content-wrapper2">
             <img src={this.props.image} alt="logos" className="book-card-img"/>
@@ -36,18 +36,6 @@ class BookCard extends Component {
             </div>
           </div>
         </div>
-        {/* <div className="likes">
-          <div className="like-profile">
-            <img
-              src="https://randomuser.me/api/portraits/women/63.jpg"
-              alt=""
-              className="like-img"
-            />
-          </div>
-          <div className="like-name">
-            <span>Kimberly Jones</span> like this
-          </div>
-        </div> */}
       </div>
     );
   }

@@ -65,7 +65,10 @@ class UpdatedBook extends Component {
 
   render() {
     return (
-      <div className="container3" style={{backgroundImage: `url(${this.state.poster})`, backgroundSize: `cover`, backgroundPosition: `center`, backgroundRepeat: `no-repeat`}}>
+      <div className="container3">
+        <div className="container3-div">
+          <img src={this.state.poster} alt="book poster"/>
+        </div>
         <form onSubmit={(e) => this.handleSubmit(e)} className="edit-form">
           <h2>Update the book</h2>
           <label htmlFor="">Ttile Book</label>

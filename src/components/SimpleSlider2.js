@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import service from "../api/service";
 
-class SimpleSlider extends Component {
+class SimpleSlider2 extends Component {
   state = {
     name: this.props.name,
     books: [],
@@ -10,9 +10,9 @@ class SimpleSlider extends Component {
 
   getAllBooks = async () => {
       const name = this.props.name;
-      const count = 0;
-      const allBooks = await service.getBooksFromApi(name, count);
+      const allBooks = await service.getGoogleBooks(name);
       this.setState({ books: allBooks });
+      console.log(this.state.books, "Simple Slider google")
   };
 
   componentDidMount = () =>{
@@ -71,12 +71,12 @@ class SimpleSlider extends Component {
           return (
             <div className="div-slider" key={key}>
                 <div className="slider-item">
-                  <a href={(`/details/${book.ID}`)}>
-                    <img src={book.cover} alt={book.title}/>
+                  <a href={book.volumeInfo.previewLink} rel="noopener noreferrer" target="_blank">
+                    <img src={book.volumeInfo.imageLinks?.thumbnail} alt={book.volumeInfo.title}/>
                   </a>
                 </div>
                 <div className="prueba1">
-                  <p>{book.title}</p>
+                  <p>{book.volumeInfo.title}</p>
                 </div>
             </div>
           )
@@ -86,4 +86,16 @@ class SimpleSlider extends Component {
   }
 }
 
-export default SimpleSlider;
+export default SimpleSlider2;
+
+// index={book.ID}
+// title={book.volumeInfo.title}
+// preview={book.volumeInfo.previewLink}
+// preview_name={'Preview'}
+// image={book.volumeInfo.imageLinks?.thumbnail}
+// content={book.searchInfo?.textSnippet}
+// publisher={book.publisher}
+// date={book.publishedDate}
+// amount={book.saleInfo.listPrice?.amount}
+// money={book.saleInfo.listPrice?.currencyCode}
+// author={book.author}

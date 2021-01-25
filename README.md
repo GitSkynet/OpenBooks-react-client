@@ -1,47 +1,34 @@
 # OpenBooks V2
 
-En la segunda versión de OpenBooks, he decidido hacer la web desde cero utilizando el Stack MERN, utilizando:
-
-* ReactJS para una mejor funcionalidad de la web
-* MongoDB como base de datos
-* Express y Node para Backend
-* React Bootstrap para el estilo
+React - Client OpenBooks
+Explicaión de las funcionalidades del sitio web, qué ofreces y en qué vas a seguir trabajando e implementando en un futuro NO muy lejano
 
 ## Comenzando 🚀
-
-Para poder ver y probar este proyecto en tu ordenador local, deberás hacer un Fork tanto de este repositorio como el repositorio del servidor **(enlace repo server openbooks V2)**. Después, realiza un npm install para instalar todas las dependencias. Algunos paquetes como Bootstrap deberás instalarlos a mano.
-
-````
-npm install react-bootstrap
-````
-
-Mira **Deployment** para conocer como desplegar el proyecto
-
-
-### Pre-requisitos 📋
-
-_Paquetes necesarios_
-
-```
-* Bootstrap
-* Axios
-* Font-Awesome
-```
-
 ### Instalación 🔧
+Para poder ver y probar este proyecto en tu ordenador local, haz Fork tanto de este repositorio como el [repositorio del cliente](https://github.com/GitSkynet/OpenBooks-react-client)
 
-_Descarga el proyecto en tu ordenador local_
+Antes de poner el servidor en marcha, debemos crear un archivo y descargar las pedendencias.
+Crea  un **archivo .env** en el directorio raíz, donde añadiremos las siguientes keys:
 
-_npm install_
-
-```
-Da un ejemplo
-```
-
-_Para ejecutar el cliente:_
+### Keys 📋
 
 ```
-npm start
+* SECRET_SESSION=<nombre(anithing)>
+* PUBLIC_DOMAIN=http://localhost:3000
+* MONGODB_URI=<url_mongoDB local/atlas>
+* DATABASE=<nombre de tu base de datos>
+* PORT=4000
+* SECRET_SESSION=<nombre>
+* cloudName=<cloudinary>
+* cloudKey=<cloudinary>
+* cloudSecret=<cloudinary>
+```
+
+
+_Una vez creado nnuestro archivo .env, instalamos todas las dependencias y ejectuamos el servidor_
+
+```
+npm install
 ```
 
 _Para ejecutar el servidor:_
@@ -50,73 +37,64 @@ _Para ejecutar el servidor:_
 npm run dev
 ```
 
-_Ahora ve a tu navegador y abre la dirección http://localhost:3000 para ver el proyecto en funcionamiento_
+_Ya tenemos nuestro backend escuchando en http://localhost:4000 y conectado a mongoDB_
 
-## Ejecutando las pruebas ⚙️
+## Realizando el deploy en Heroku ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+## 📌Una vez tengas la build hecha del repo del cliente📌, ejecutamos:
 
-### Analice las pruebas end-to-end 🔩
+_Para comprobar que se ha añadido a la carpeta public los cambios de la build_
+```
+git status
+```
+_Añadimos  Todos los cambios_
+```
+git add .
+```
+_Creamos el commit_
+```
+git commit -m"myCommit"
+```
+_Hacemos el push a Heroku_
+```
+git git push heroku master"
+```
 
-_Explica que verifican estas pruebas y por qué_
+### Configurando Heroku 🔩
+
+_Habrá que crear en Heoku las mismas variables que declaramos arriba para el archivo .env, pero en este caso; en la dirección de la base de datos le daremos la dirección de mongoDB Atlas_
 
 ```
-Da un ejemplo
+MONGODB_URI=tu dirección de mongodb atlas
 ```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+_Server realizado con_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [nodeJS](https://nodejs.org/es/) - entorno de ejecución para JavaScript construido con el motor de JavaScript V8 de Chrome.
+* [Express](https://expressjs.com/es/) - Framework de nodeJS
+* [Cloudinary](https://cloudinary.com/) - Nube para gestionar y almacenar imágenes en la web
 
-## Contribuyendo 🖇️
+## Actualemente trabajando🖇️
 
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+- Refactorizar y pulir todo el código del backend, para mejorar la eficiencia y rendimiento a la hora de hacer/recibir llamadas de la base de datos.
+- Incorporar nodeMailer
+- Incorporar Disquss en la web
+- Habilitar la creación de listas (user)
+- Habilitar feed social
+- Habilitar añadir a favoritos/user Lists  
 
-## Wiki 📖
+## Autor ✒️
 
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+* **LinkedIn** - [Carlos Curtido](https://www.linkedin.com/in/carlos-curtido/)
+* **GitHub** - [GitSkynet](https://github.com/GitSkynet)
 
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
+También puedes mirar mi [portfolio](https://portfoliocurtido.herokuapp.com/) donde muestro otros proyectos en los que estoy trabajando 
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
-
-
+Este proyecto está bajo Licencia libre - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+⌨️ con ❤️ por [Carlos Curtido](https://github.com/GitSkynet) ❤️

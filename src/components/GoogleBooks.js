@@ -6,7 +6,6 @@ import SuperHomeGoogle from "./SuperHomeGoogle";
 
 class GoogleBooks extends Component {
   state = {
-    books: [],
     filteredBooks: [],
   };
 
@@ -14,7 +13,7 @@ class GoogleBooks extends Component {
     const searchedTerm = searchTerm.toLowerCase();
     const filteredList = await service.searchGoogle(searchedTerm);
     if (searchTerm) {
-      this.setState({ filteredBooks: filteredList.data.items });
+      this.setState({ filteredBooks: filteredList?.data.items });
     }
   };
 
@@ -28,7 +27,7 @@ class GoogleBooks extends Component {
         <div className="google-div">
           <h1>Google Books API </h1>
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_Play_Books_icon_%282016%29.svg/1200px-Google_Play_Books_icon_%282016%29.svg.png"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Google_Play_Books_icon_%282016%29.svg/1200px-Google_Play_Books_icon_%282016%29.png"
             alt="Google Logo"
           />
           <SearchBar

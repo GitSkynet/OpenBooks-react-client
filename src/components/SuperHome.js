@@ -40,7 +40,7 @@ class SuperHome extends Component {
 
   render() {
       const books = this.state.books;
-      const name = this.state.name.replace(/_/g, ' ').toUpperCase();
+      const name = this.state.name.replace(/_/g, ' ');
     return (
         <>
         <Navbar id="prueba" bg="dark" expand="lg" style={{  background:' #24282f !important'}}>

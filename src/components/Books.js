@@ -10,7 +10,6 @@ class Books extends Component {
         category: [],
         name: "",
         count: 0,
-        vof: false,
     }
 
     scroll = () => {
@@ -22,10 +21,10 @@ class Books extends Component {
         const name = this.props.match.params.name;
         const pagina = this.state.pagina;
         const counter = pagina * 10;
-        console.log(counter, "pagina funcion libros")
         const count = await service.getCountItems(name);
         const allBooks = await service.getBooksFromApi(name, counter)
-        this.setState({ books: allBooks, name: name.replace(/_/g, ' ').capitalize, count: count})
+        const name2 = name.replace(/_/g, ' ').capitalize
+        this.setState({ books: allBooks, name: name2, count: count})
     }
 
     paginaAnterior = () => {
@@ -35,6 +34,7 @@ class Books extends Component {
         this.setState({ pagina: pagina });
         this.scroll();
     }
+
     paginaSiguiente = () => {
         let pagina = this.state.pagina;
         let count = this.state.books.length;
@@ -50,6 +50,7 @@ class Books extends Component {
     componentDidMount() {
         this.getAllBooks();
     }
+
     componentDidUpdate() {
         this.getAllBooks();
     }

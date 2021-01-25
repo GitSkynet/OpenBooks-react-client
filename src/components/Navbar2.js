@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
-import { withAuth } from "../lib/AuthProvider";			//	<-- UPDATE HERE
+import { withAuth } from "../lib/AuthProvider";
 
 class Navbar2 extends Component {
     render() {
-        const { logout, isLoggedin } = this.props;	//	<-- UPDATE HERE
+        const { logout, isLoggedin } = this.props;
 
         return (
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -15,7 +15,7 @@ class Navbar2 extends Component {
                             <>
                                 <Nav className="mr-auto">
                                     <Nav.Link href="/private">Profile</Nav.Link>
-                                    <Nav.Link href="/books/ourbooks">Our Books</Nav.Link>
+                                    {/* <Nav.Link href="/books/ourbooks">Our Books</Nav.Link> */}
                                     <Nav.Link href="/books/googlebooks">Google Books</Nav.Link>
                                     <Nav.Link href="/books/openlibra">Open Libra</Nav.Link>
                                     <NavDropdown title="Categorías" id="collasible-nav-dropdown">

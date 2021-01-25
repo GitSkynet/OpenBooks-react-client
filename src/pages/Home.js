@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-// import NewsHome from '../components/NewsHome';
-// import NewsHome2 from '../components/NewsHome2';
 import SimpleSlider from '../components/SimpleSlider';
 import SearchBar from "../components/SearchBar";
 import ResultsOpenLibra from '../components/ResultsOpenLibra';
@@ -31,8 +29,6 @@ class Home extends Component {
   render() {
     return (
       <>
-        {/* <NewsHome2 />   // Introduction section (!! CHANGE NAME !!)
-        <NewsHome />    // JavaScript section (!! CHANGE NAME !!) */}
         <SearchBar
           filterSearch={this.searchOpenLibra}
           clearSearch={this.clearSearch}
@@ -50,7 +46,7 @@ class Home extends Component {
           </div>
           <div className="home-slider">
             <h6>JavaScript</h6>
-              <a href={("/books/openlibra/javascript")}>View all results</a>
+              <a href={("/books/openlibra/javascript/")}>View all results</a>
           </div>
           <div>
             <SimpleSlider 
@@ -62,7 +58,6 @@ class Home extends Component {
             <a href={("/books/openlibra/programacion_php")}>View all results</a>
           </div>
           <div>
-            {/* SlidersHome */}
             <SimpleSlider 
               name={'programacion_php'}
             />

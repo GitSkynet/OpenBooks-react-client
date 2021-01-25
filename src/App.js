@@ -3,7 +3,6 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import AuthProvider from "./lib/AuthProvider";
 import Books from "./components/Books";
-// import Navbar from "./components/Navbar";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Private from "./pages/Private";
