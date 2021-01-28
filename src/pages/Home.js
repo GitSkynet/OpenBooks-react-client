@@ -77,60 +77,6 @@ class Home extends Component {
             </>
             )
           })}
-          {/* <div className="home-slider">
-            <h6>PHP</h6>
-            <a href={("/books/openlibra/programacion_php")}>View all results</a>
-          </div>
-          <div>
-            <SimpleSlider 
-              name={'programacion_php'}
-            />
-          </div>
-          <div className="home-slider">
-            <h6>Web Development</h6>
-            <a href={("/books/openlibra/desarrollo_web")}>View all results</a>
-          </div>
-          <div>
-            <SimpleSlider 
-              name={'desarrollo_web'}
-            />
-          </div>
-          <div className="home-slider">
-            <h6>C Development</h6>
-            <a href={("/books/openlibra/c")}>View all results</a>
-          </div>
-          <div>
-            <SimpleSlider 
-              name={'c'}
-            />
-          </div>
-          <div className="home-slider">
-            <h6>C# Development</h6>
-            <a href={("/books/openlibra/c-sharp")}>View all results</a>
-          </div>
-          <div>
-            <SimpleSlider 
-              name={'c-sharp'}
-            />
-          </div>
-          <div className="home-slider">
-            <h6>C++ Development</h6>
-            <a href={("/books/openlibra/c-plus-plus")}>View all results</a>
-          </div>
-          <div>
-            <SimpleSlider 
-              name={'c-plus-plus'}
-            />
-          </div>
-          <div className="home-slider">
-            <h6>Python</h6>
-            <a href={("/books/openlibra/programacion_python")}>View all results</a>
-          </div>
-          <div>
-            <SimpleSlider 
-              name={'programacion_python'}
-            />
-          </div> */}
           </div>
         <div className="home-section2">
           <div>
