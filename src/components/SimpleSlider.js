@@ -67,9 +67,9 @@ class SimpleSlider extends Component {
     const books = this.state.books;
     return (
         <Slider {...settings}>
-        {books?.map((book, key= this.state.books.ID) => {
+        {books?.map((book) => {
           return (
-            <div className="div-slider" key={key}>
+            <div className="div-slider" key={book.ID}>
                 <div className="slider-item">
                   <a href={(`/details/${book.ID}`)}>
                     <img src={book.cover} alt={book.title}/>

@@ -17,7 +17,6 @@ class Home extends Component {
   getAllBooks = async () => {
       const categories = await service.getCategoriesFromApi()
       this.setState({ categories });
-      console.log( "Cat:" ,this.state.categories)
       // const name = this.state.name;
       // const count = 0;
       // const allBooks = await service.getBooksFromApi(name, count);
@@ -29,7 +28,6 @@ class Home extends Component {
   searchOpenLibra = async (searchTerm) => {
     const searchedTerm = searchTerm.toLowerCase();
     const count = await service.getCountSearch(searchedTerm);
-    console.log(count, "cuenta?")
     const filteredList = await service.searchBook(searchedTerm);
     if (searchTerm) {
       this.setState({ filteredBooks: filteredList, count: count })
@@ -62,21 +60,21 @@ class Home extends Component {
             <h6>Most rated on...</h6>
             <img src="https://openlibra.blob.core.windows.net/assets-files/powered-by-openlibra-logo.png" alt="Open Libra Logo" />
           </div>
-          {this.state.categories?.map((eachName) =>{
-            return(
-              <>
-            <div className="home-slider">
-              <h6>{eachName.name}</h6>
-                <a href={(`/books/openlibra/${eachName.nicename}`)}>View all results</a>
-            </div>
-            <div>
-              <SimpleSlider 
-              name={eachName.nicename}
-              />
-            </div>
-            </>
-            )
-          })}
+            {this.state.categories?.map((eachName) =>{
+              return(
+              <>  
+                <div className="home-slider" key={eachName.category_id}>
+                  <h6>{eachName.name}</h6>
+                  <a href={(`/books/openlibra/${eachName.nicename}`)}>View all results</a>
+                </div>
+                <div>
+                  <SimpleSlider 
+                    name={eachName.nicename}
+                  />
+                </div>
+              </>
+              )
+            })}
           </div>
         <div className="home-section2">
           <div>
