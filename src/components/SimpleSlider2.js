@@ -12,7 +12,6 @@ class SimpleSlider2 extends Component {
       const name = this.props.name;
       const allBooks = await service.getGoogleBooks(name);
       this.setState({ books: allBooks });
-      console.log(this.state.books, "Simple Slider google")
   };
 
   componentDidMount = () =>{
@@ -26,7 +25,7 @@ class SimpleSlider2 extends Component {
       speed: 300,
       slidesToShow: 3,
       slidesToScroll: 3,
-      initialSlide: 1,
+      initialSlide: 0,
       responsive: [
         {
           breakpoint: 3024,

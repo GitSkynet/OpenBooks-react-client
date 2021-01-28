@@ -14,11 +14,11 @@ Crea  un **archivo .env.production y un archivo .env.development** en el directo
 ### Key 📋
 _En el archivo .env.development crea esta key con esta dirección_
 ```
-* REACT_APP_API_URI=http://localhost:4000
+REACT_APP_API_URI=http://localhost:4000
 ```
 _En el archivo .env.production crea esta key con la dirección de tu host (heroku, firebase, servidor propio, etc)_
 ```
-* REACT_APP_API_URI=<servidor aquí>
+REACT_APP_API_URI=<servidor aquí>
 ```
 
 _Una vez los archivos creados, ya estamos listos para instalar las dependencias y levantar el servidor_

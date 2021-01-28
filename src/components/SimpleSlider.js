@@ -26,7 +26,7 @@ class SimpleSlider extends Component {
       speed: 300,
       slidesToShow: 3,
       slidesToScroll: 3,
-      initialSlide: 1,
+      initialSlide: 0,
       responsive: [
         {
           breakpoint: 3024,

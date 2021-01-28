@@ -8,7 +8,7 @@ class BookCard extends Component {
       <div className="book-card">
         <div className="content-wrapper">
           <div className="content-wrapper2">
-            <img src={this.props.image} alt="logos" className="book-card-img"/>
+              <img src={this.props.image} alt="logos" className="book-card-img"/>
             <span className="book-voters card-vote">1.987 voter</span>
             <div className="rate">
                 <fieldset className="rating book-rate">

@@ -682,12 +682,14 @@ a:hover{
 	flex-wrap: wrap;
 }
 
-.create-div h1{
-	text-transform: capitalize;
-	height: 40px;
-	color: white;
-	font-weight: 700;
-	font-size: large;
+.create-div h1 {
+    text-transform: capitalize;
+    height: 40px;
+    color: white;
+    font-weight: 700;
+    font-size: 4em;
+    width: calc(100vh);
+    text-align: center;
 }
 
 .align-delete{
@@ -1996,6 +1998,20 @@ footer {
     padding: 0;
 }
 
+.slick-dots li button::before {
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .25;
+    color: #fff !important;
+}
+
 /* NAVBAR OPENLIBRA PAGE SUPERHOME */
 
 .dropdown-menu {
@@ -2064,7 +2080,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
-    margin: 0 30px;
+    margin: 15px 30px;
     font-weight: 700;
 }
 

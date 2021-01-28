@@ -11,8 +11,12 @@ class SuperHome extends Component {
         count: 0
     }
 
-    getAllBooks = async () => {
-        const name = this.state.name;
+    getAllBooks = async (name) => {
+        if(!name){
+            name = this.state.name;
+        }else{
+            this.setState({name: name})
+        }
         const count = await service.getCountItems(name);
         const allBooks = await service.getSubCategoriesFromApi(name);
         this.setState({ books: allBooks, count: count});
@@ -23,24 +27,13 @@ class SuperHome extends Component {
         element.scrollIntoView('ease-in', 'start');
     }
     
-    ChangeName = (name2) => {
-        const name = this.state.name;
-        if(name){
-            this.setState({ name: name2});  
-        }
-    }
-    
     componentDidMount = () =>{
         this.getAllBooks();
     }
 
-    componentDidUpdate = () =>{
-        this.getAllBooks();
-    }
-
-  render() {
-      const books = this.state.books;
-      const name = this.state.name.replace(/_/g, ' ');
+    render() {
+        const books = this.state.books;
+        const name = this.state.name.replace(/_/g, ' ');
     return (
         <>
         <Navbar id="prueba" bg="dark" expand="lg" style={{  background:' #24282f !important'}}>
@@ -50,50 +43,50 @@ class SuperHome extends Component {
                 <Nav className="mr-auto">
                     {/* <-- Category Version Control dropdown --> */}
                     <NavDropdown title="Control Versiones" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.ChangeName("control_de_versiones")}>All results</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("control_de_versiones")}>All results</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item onClick={() => this.ChangeName("git")}>Git</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("mercurial")}>Mercurial</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("subversion")}>Subversion</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("git")}>Git</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("mercurial")}>Mercurial</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("subversion")}>Subversion</NavDropdown.Item>
                     </NavDropdown>
                     {/* <-- Category BBDD dropdown --> */}
                     <NavDropdown title="BBDD" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.ChangeName("bases_de_datos_general")}>All results</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("bases_de_datos_general")}>All results</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item onClick={() => this.ChangeName("mysql_bases_de_datos")}>MySQL</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("nosql")}>NoSQL</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("postgresql")}>PostGreSQL</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("mysql_bases_de_datos")}>MySQL</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("nosql")}>NoSQL</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("postgresql")}>PostGreSQL</NavDropdown.Item>
                     </NavDropdown>
                     {/* <-- Category Web Development dropdown --> */}
                     <NavDropdown title="Web Development" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.ChangeName("desarrollo_web")}>All results</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("desarrollo_web")}>All results</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item onClick={() => this.ChangeName("accesibilidad_usabilidad")}>Accesibilidad / Usabilidad</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("desarrollo_web_css")}>CSS</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("html")}>HTML</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("diseño_web")}>Diseño Web</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("herramientas_desarrollo_web")}>Herramientas</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("accesibilidad_usabilidad")}>Accesibilidad / Usabilidad</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("desarrollo_web_css")}>CSS</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("html")}>HTML</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("diseño_web")}>Diseño Web</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("herramientas_desarrollo_web")}>Herramientas</NavDropdown.Item>
 
                     </NavDropdown>
                     {/* <--! Category Programming dropdown !--> */}
                     <NavDropdown title="Programming" id="basic-nav-dropdown">
-                        <NavDropdown.Item onClick={() => this.ChangeName("libros_programacion")}>All results</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("libros_programacion")}>All results</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item onClick={() => this.ChangeName("net")}>Net</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("ada")}>ADA</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("algoritmos")}>Algoritmos</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("c")}>C programming</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("c-plus-plus")}>C++</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("c-sharp")}>C Sharp</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("cloud-computing-libros_programacion")}>Cloud Computing</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("dispositivos_moviles")}>Mobile Development</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("hardware-libros_programacion")}>Hardware</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("haskell")}>Haskell</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("herramientas")}>Herramientas</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("programacion_java")}>Java</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("programacion_javascript_ajax")}>JavaScript</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("jquery_libros_programacion")}>JQuery</NavDropdown.Item>
-                        <NavDropdown.Item onClick={() => this.ChangeName("programacion_python")}>Python</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("net")}>Net</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("ada")}>ADA</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("algoritmos")}>Algoritmos</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("c")}>C programming</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("c-plus-plus")}>C++</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("c-sharp")}>C Sharp</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("cloud-computing-libros_programacion")}>Cloud Computing</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("dispositivos_moviles")}>Mobile Development</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("hardware-libros_programacion")}>Hardware</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("haskell")}>Haskell</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("herramientas")}>Herramientas</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("programacion_java")}>Java</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("programacion_javascript_ajax")}>JavaScript</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("jquery_libros_programacion")}>JQuery</NavDropdown.Item>
+                        <NavDropdown.Item onClick={() => this.getAllBooks("programacion_python")}>Python</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>

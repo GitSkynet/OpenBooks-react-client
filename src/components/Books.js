@@ -10,6 +10,7 @@ class Books extends Component {
         category: [],
         name: "",
         count: 0,
+        counter: 10
     }
 
     scroll = () => {
@@ -17,41 +18,47 @@ class Books extends Component {
         element.scrollIntoView('ease-in', 'start');
     }
 
-    getAllBooks = async () => {
+    getAllBooks = async (page = 0) => {
         const name = this.props.match.params.name;
-        const pagina = this.state.pagina;
-        const counter = pagina * 10;
+        const counter = page * 10;
         const count = await service.getCountItems(name);
         const allBooks = await service.getBooksFromApi(name, counter)
-        const name2 = name.replace(/_/g, ' ').capitalize
+        const name2 = name.replace(/_/g, ' ')
         this.setState({ books: allBooks, name: name2, count: count})
     }
 
     paginaAnterior = () => {
-        let pagina = this.state.pagina
-        if (pagina === 0) return null;
+        let pagina = this.state.pagina;
+        let counter = this.state.counter;
+        if (pagina === 0) {return null}
+        else{
         pagina--;
-        this.setState({ pagina: pagina });
-        this.scroll();
+        counter -= 10;
+        this.setState({ pagina: pagina, counter: counter });
+        }
+    this.scroll();
+    this.getAllBooks(pagina);
     }
 
     paginaSiguiente = () => {
         let pagina = this.state.pagina;
         let count = this.state.books.length;
+        let counter = this.state.counter;
         if (count < 10) {
-            this.setState({ pagina: 0 });
+            pagina = 0;
+            counter = 10;
+            this.setState({ pagina: pagina, counter: counter });
+            this.getAllBooks(pagina);
         } else {
             pagina++;
-            this.setState({ pagina: pagina });
+            counter += count;
+            this.setState({ pagina: pagina, counter: counter });
+            this.getAllBooks(pagina);
         }
         this.scroll();
     }
 
     componentDidMount() {
-        this.getAllBooks();
-    }
-
-    componentDidUpdate() {
         this.getAllBooks();
     }
 
@@ -63,7 +70,15 @@ class Books extends Component {
                     <h1>{this.state.name}</h1>
                 </div>
                 <div className="results-bookpage">
-                    <h5>{this.state.count} results</h5>
+                    {this.state.counter > this.state.count ? (
+                    <>
+                        <h5>{this.state.count} of {this.state.count} results</h5>
+                    </>
+                    ):(
+                    <>
+                        <h5>{this.state.counter} of {this.state.count} results</h5>
+                    </>
+                    )}
                     <h5> Page {this.state.pagina+1} </h5>
                 </div>
                 <div className="book-cards">
@@ -87,6 +102,7 @@ class Books extends Component {
                     <Paginacion
                         paginaAnterior={this.paginaAnterior}
                         paginaSiguiente={this.paginaSiguiente}
+                        length={this.state.books.length}
                     />
                 </div>
             </div>

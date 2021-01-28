@@ -8,22 +8,40 @@ import service from '../api/service';
 class Home extends Component {
   state={
     filteredBooks: [],
-    count: 0
-  } 
+    count: 0,
+    name: '',
+    categories: [],
+    books: []
+  }; 
+
+  getAllBooks = async () => {
+      const categories = await service.getCategoriesFromApi()
+      this.setState({ categories });
+      console.log( "Cat:" ,this.state.categories)
+      // const name = this.state.name;
+      // const count = 0;
+      // const allBooks = await service.getBooksFromApi(name, count);
+      // this.setState({ books: allBooks });
+  };
+
   
   //Search Function
-   searchOpenLibra = async (searchTerm) => {
+  searchOpenLibra = async (searchTerm) => {
     const searchedTerm = searchTerm.toLowerCase();
     const count = await service.getCountSearch(searchedTerm);
     console.log(count, "cuenta?")
     const filteredList = await service.searchBook(searchedTerm);
     if (searchTerm) {
-        this.setState({ filteredBooks: filteredList, count: count })
+      this.setState({ filteredBooks: filteredList, count: count })
     }
   }
   
   clearSearch = () => {
     this.setState({ filteredBooks: [] });
+  }
+  
+  componentDidMount = () =>{
+    this.getAllBooks();
   }
 
   render() {
@@ -44,16 +62,22 @@ class Home extends Component {
             <h6>Most rated on...</h6>
             <img src="https://openlibra.blob.core.windows.net/assets-files/powered-by-openlibra-logo.png" alt="Open Libra Logo" />
           </div>
-          <div className="home-slider">
-            <h6>JavaScript</h6>
-              <a href={("/books/openlibra/javascript/")}>View all results</a>
-          </div>
-          <div>
-            <SimpleSlider 
-            name={'javascript'}
-            />
-          </div>
-          <div className="home-slider">
+          {this.state.categories?.map((eachName) =>{
+            return(
+              <>
+            <div className="home-slider">
+              <h6>{eachName.name}</h6>
+                <a href={(`/books/openlibra/${eachName.nicename}`)}>View all results</a>
+            </div>
+            <div>
+              <SimpleSlider 
+              name={eachName.nicename}
+              />
+            </div>
+            </>
+            )
+          })}
+          {/* <div className="home-slider">
             <h6>PHP</h6>
             <a href={("/books/openlibra/programacion_php")}>View all results</a>
           </div>
@@ -106,8 +130,8 @@ class Home extends Component {
             <SimpleSlider 
               name={'programacion_python'}
             />
+          </div> */}
           </div>
-        </div>
         <div className="home-section2">
           <div>
             <h3>Join today!</h3>
