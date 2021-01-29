@@ -62,8 +62,8 @@ class Home extends Component {
           </div>
             {this.state.categories?.map((eachName) =>{
               return(
-              <>  
-                <div className="home-slider" key={eachName.category_id}>
+              <div key={eachName.category_id}>  
+                <div className="home-slider" >
                   <h6>{eachName.name}</h6>
                   <a href={(`/books/openlibra/${eachName.nicename}`)}>View all results</a>
                 </div>
@@ -72,7 +72,7 @@ class Home extends Component {
                     name={eachName.nicename}
                   />
                 </div>
-              </>
+              </div>
               )
             })}
           </div>

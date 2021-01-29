@@ -23,7 +23,7 @@ class Books extends Component {
         const counter = page * 10;
         const count = await service.getCountItems(name);
         const allBooks = await service.getBooksFromApi(name, counter)
-        const name2 = name.replace(/_/g, ' ')
+        const name2 = name.replace(/_/g, ' ').replace(/-/g, ' ')
         this.setState({ books: allBooks, name: name2, count: count})
     }
 

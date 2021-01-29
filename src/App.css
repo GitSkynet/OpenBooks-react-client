@@ -5,6 +5,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
+
 body {
   font-family: "Poppins", sans-serif !important;
   background: #24282f !important;
@@ -684,12 +685,12 @@ a:hover{
 
 .create-div h1 {
     text-transform: capitalize;
-    height: 40px;
     color: white;
     font-weight: 700;
     font-size: 4em;
     width: calc(100vh);
     text-align: center;
+    font-size: calc(6vh);
 }
 
 .align-delete{

@@ -16,7 +16,7 @@ class Navbar2 extends Component {
                                 <Nav className="mr-auto">
                                     <Nav.Link href="/private">Profile</Nav.Link>
                                     {/* <Nav.Link href="/books/ourbooks">Our Books</Nav.Link> */}
-                                    <Nav.Link href="/books/googlebooks">Google Books</Nav.Link>
+                                    {/* <Nav.Link href="/books/googlebooks">Google Books</Nav.Link> */}
                                     <Nav.Link href="/books/openlibra">Open Libra</Nav.Link>
                                     <NavDropdown title="Categorías" id="collasible-nav-dropdown">
                                         <NavDropdown.Item href="/books/openlibra/control_de_versiones">Git & GitHub</NavDropdown.Item>
