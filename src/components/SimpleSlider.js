@@ -4,15 +4,15 @@ import service from "../api/service";
 
 class SimpleSlider extends Component {
   state = {
-    name: this.props.name,
     books: [],
   };
 
   getAllBooks = async () => {
-      const name = this.props.name;
+      const name = this.props.nicename;
       const count = 0;
       const allBooks = await service.getBooksFromApi(name, count);
       this.setState({ books: allBooks });
+      //console.log(this.state.books, "SimpleSlider")
   };
 
   componentDidMount = () =>{

@@ -11,7 +11,8 @@ class Home extends Component {
     count: 0,
     name: '',
     categories: [],
-    books: []
+    books: [],
+    changer: 'category_id'
   }; 
 
   getAllBooks = async () => {
@@ -69,7 +70,8 @@ class Home extends Component {
                 </div>
                 <div>
                   <SimpleSlider 
-                    name={eachName.nicename}
+                    name={eachName.name}
+                    nicename={eachName.nicename}
                   />
                 </div>
               </div>

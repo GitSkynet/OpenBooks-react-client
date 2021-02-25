@@ -1,3 +1,6 @@
+
+
+
 import axios from "axios";
 
 class Service {
@@ -102,15 +105,25 @@ class Service {
     }
   }
 
-    //GET Subcategories from API
-    getSubCategoriesFromApi = async ( name) => {
-      try {
-        const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?subcategory=${name}&num_items=10`);
-        return (books.data)
-      } catch (error) {
-        console.log(error)
-      }
+  //Get Categories from API
+  getCategoriesFromApi = async (name) => {
+    try {
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?get_categories=${name}`);
+      return res.data;
+    } catch (error) {
+      console.log(error)
     }
+  }
+
+  //GET Subcategories from API
+  getSubCategoriesFromApi = async ( id ) => {
+    try {
+      const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?get_subcategories_by_category_ID=${id}`);
+      return (books.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   //Search funtion over OpenLilbra API
   searchBook = async (name) => {
@@ -133,15 +146,6 @@ class Service {
     }
   }
 
-  //Get Categories from API
-  getCategoriesFromApi = async () => {
-    try {
-      const res = await axios.get("https://www.etnassoft.com/api/v1/get/?get_categories=all");
-      return res.data;
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
  ////////////END BOOKS FROM OPENLIBRA API//////////////////
 

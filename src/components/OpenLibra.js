@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import service from '../api/service';
 import NewsHome2 from './NewsHome2';
-// import SearchBar from "../components/SearchBar";
-// import ResultsOpenLibra from './ResultsOpenLibra';
-import SuperHome from './SuperHome';
+import SimpleSlider from '../components/SimpleSlider';
 
 class OpenLibra extends Component {
     state = {
-        filteredBooks: [],
-        pagina: "",
-        campo: "",
-        categories: []
+        categories: [],
+        subcategories: []
     }
 
     //Get Categories Function
@@ -18,28 +14,56 @@ class OpenLibra extends Component {
         const res = await service.getCategoriesFromApi()
         this.setState({ categories: res });
     }
+    
+    subCategories = async (id, name) => {
+        if(id === undefined){
+            id = 677;
+        };
+        const res = await service.getSubCategoriesFromApi(id);
+        this.setState({ subcategories: res});
+    }
 
     componentDidMount = () => {
         this.getCategories();
-    }
-
+        this.subCategories();
+    };
+    
     render() {
         return (
             <div>
             <NewsHome2 />
-            <SuperHome />
+            <div className="container-slider">
+                <h6>Select Category</h6>
+                <select>
+                {this.state.categories?.map((eachOne) => {
+                    return (
+                        <>
+                        <option onClick={() => this.subCategories(eachOne.category_id, eachOne.nicename)}>{eachOne.name}</option>
+                        </>
+                    )
+                })}
+                </select>
+                <img src="https://openlibra.blob.core.windows.net/assets-files/powered-by-openlibra-logo.png" alt="Open Libra Logo" />
+            </div>
+            {this.state.subcategories?.map ((eachOne) => {
+                return(
+                    <div key={eachOne.subcategory_id}>  
+                        <div className="home-slider" >
+                        <h6>{eachOne.name}</h6>
+                        <a href={(`/books/openlibra/${eachOne.nicename}`)}>View all results</a>
+                        </div>
+                        <div>
+                        <SimpleSlider 
+                            name={eachOne.name}
+                            nicename={eachOne.nicename}
+                        />
+                        </div>
+                    </div>
+                )
+            })}
                 <div className="home-section">
                     <h1>Categories</h1>
                     <h2>Navigate directly to...</h2>
-                </div>
-                <div className="container-categories">
-                    {this.state.categories.map((oneCategory, index = this.state.categories.ID) => {
-                        return (
-                            <div key={index} className="card-categories">
-                                <a href={`/books/openlibra/${oneCategory.nicename}`}><h6>{oneCategory.name}</h6></a>
-                            </div>
-                        )
-                    })}
                 </div>
             </div>
         );
