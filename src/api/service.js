@@ -1,6 +1,3 @@
-
-
-
 import axios from "axios";
 
 class Service {
@@ -140,9 +137,19 @@ class Service {
     try {
       const counter = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${name}&count_items=true`);
       const count = counter.data.num_items;
-      return (count)
+      return (count);
     } catch (error) {
-      console.log(error)
+      console.log(error);
+    }
+  }
+
+  getDetailsBook = async (id) =>{
+    try {
+      const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?id=${id}`);
+      console.log("service:", res.data);
+      return res.data[0];
+    } catch (error) {
+      console.log(error);
     }
   }
 

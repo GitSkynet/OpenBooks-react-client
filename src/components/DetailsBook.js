@@ -1,32 +1,29 @@
 import React, { Component } from 'react';
 import service from '../api/service';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
 import { DiscussionEmbed } from 'disqus-react';
 
 class DetailsBook extends Component {
     state = {
         book: {},
         categories: []
-    }
+    };
 
-    getDetailsBook = () => {
-        const id = this.props.match.params.id
-        axios.get(`https://www.etnassoft.com/api/v1/get/?id=${id}`)
-        .then(response =>{
-            const book = response.data[0]    
-            this.setState({book: book});
-        })
-    }
+    getDetailsBook = async () => {
+        const id = this.props.match.params.id;
+        const res = await service.getDetailsBook(id);
+        console.log("res", res);
+        this.setState({ book: res})
+    };
 
     deleteBook = async () => {
         await service.deleteBook(this.props.match.params.id);
         this.props.history.push("/books");
-    }
+    };
 
     componentDidMount = () => {
         this.getDetailsBook();
-    }
+    };
 
     render() {
         const book = this.state.book;
@@ -44,17 +41,19 @@ class DetailsBook extends Component {
                         <h5>{book.publisher_date}</h5>
                     </div>
                 </div>
-                <DiscussionEmbed
-                    shortname='example'
-                    config={
-                        {
-                            url: this.props.match.params.id,
-                            identifier: book.ID,
-                            title: book.title,
-                            language: 'es_ES' //e.g. for Traditional Chinese (Taiwan)	
+                <div className="disqus">
+                    <DiscussionEmbed
+                        shortname='openbooksv2'
+                        config={
+                            {
+                                url: `${process.env.REACT_APP_API_URI}/details/${book.ID}`,
+                                identifier: book.ID,
+                                title: `Comentarios en ${book.title}`,
+                                language: 'es_ES' //e.g. for Traditional Chinese (Taiwan)	
+                            }
                         }
-                    }
-                />
+                        />
+                </div>
                 <div className="details-content">
                     <p>Descripción : <br/> {book.content}</p>
                     <div className="align-delete">
@@ -97,8 +96,8 @@ class DetailsBook extends Component {
                 </div>
             </div>
         );
-    }
-}
+    };
+};
 
 export default DetailsBook;
 
