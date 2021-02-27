@@ -9,10 +9,8 @@ class SimpleSlider extends Component {
 
   getAllBooks = async () => {
       const name = this.props.nicename;
-      const count = 0;
-      const allBooks = await service.getBooksFromApi(name, count);
+      const allBooks = await service.getBooksFromApi(name);
       this.setState({ books: allBooks });
-      //console.log(this.state.books, "SimpleSlider")
   };
 
   componentDidMount = () =>{

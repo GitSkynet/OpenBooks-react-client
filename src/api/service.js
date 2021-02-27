@@ -98,7 +98,7 @@ class Service {
   //GET Route
   getBooksFromApi = async ( name, count) => {
     try {
-      const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&results_range=${count},10`);
+      const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}`);
       return (books.data)
     } catch (error) {
       console.log(error)
@@ -116,7 +116,7 @@ class Service {
   }
 
   //GET Subcategories from API
-  getSubCategoriesFromApi = async ( id ) => {
+  getSubCategoriesFromApi = async ( id, category ) => {
     try {
       const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?get_subcategories_by_category_ID=${id}`);
       return (books.data)

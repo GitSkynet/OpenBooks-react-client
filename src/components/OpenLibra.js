@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import service from '../api/service';
 import NewsHome2 from './NewsHome2';
 import SimpleSlider from '../components/SimpleSlider';
+import BookCard from './BookCard';
 
 class OpenLibra extends Component {
     state = {
         categories: [],
-        subcategories: []
+        subcategories: [],
+        books: []
     }
 
     //Get Categories Function
@@ -17,9 +19,13 @@ class OpenLibra extends Component {
     
     subCategories = async (id, name) => {
         if(id === undefined){
-            id = 677;
+            id = 206;
         };
         const res = await service.getSubCategoriesFromApi(id);
+        if(res.length === 0) {
+            const res = await service.getBooksFromApi(name);
+            this.setState({books: res})
+        }
         this.setState({ subcategories: res});
     }
 
@@ -61,6 +67,29 @@ class OpenLibra extends Component {
                     </div>
                 )
             })}
+            <div className="book-cards">
+            {this.state.books?.map((book, key= book.ID) => {
+                return (
+                <div key={book.subcategory_id}>  
+                    <div className="home-slider" >
+                        <h6>{book.name}</h6>
+                        <a href={(`/books/openlibra/${book.nicename}`)}>View all results</a>
+                    </div>
+                    <BookCard 
+                        key={key}
+                        title={book.title}
+                        image={book.cover}
+                        content={book.content_short}
+                        publisher={book.publisher}
+                        date={book.publisher_date}
+                        author={book.author}
+                        preview={`/details/${book.ID}`}
+                        preview_name={'Details'}
+                    />
+                </div>
+                    )
+                })}
+            </div>
                 <div className="home-section">
                     <h1>Categories</h1>
                     <h2>Navigate directly to...</h2>

@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "disqus-react": "^1.0.11",
     "dotenv": "^8.2.0",
     "flickity": "^2.2.2",
     "font-awesome": "^4.7.0",

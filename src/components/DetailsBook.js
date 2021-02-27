@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import service from '../api/service';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { DiscussionEmbed } from 'disqus-react';
 
 class DetailsBook extends Component {
     state = {
@@ -11,9 +12,10 @@ class DetailsBook extends Component {
 
     getDetailsBook = () => {
         const id = this.props.match.params.id
-        axios.get(`https://www.etnassoft.com/api/v1/get/?id=${id}`).then(response =>{
-        const book = response.data[0]    
-        this.setState({book: book});
+        axios.get(`https://www.etnassoft.com/api/v1/get/?id=${id}`)
+        .then(response =>{
+            const book = response.data[0]    
+            this.setState({book: book});
         })
     }
 
@@ -42,6 +44,17 @@ class DetailsBook extends Component {
                         <h5>{book.publisher_date}</h5>
                     </div>
                 </div>
+                <DiscussionEmbed
+                    shortname='example'
+                    config={
+                        {
+                            url: this.props.match.params.id,
+                            identifier: book.ID,
+                            title: book.title,
+                            language: 'es_ES' //e.g. for Traditional Chinese (Taiwan)	
+                        }
+                    }
+                />
                 <div className="details-content">
                     <p>Descripción : <br/> {book.content}</p>
                     <div className="align-delete">
