@@ -41,21 +41,21 @@ class DetailsBook extends Component {
                         <h5>{book.publisher_date}</h5>
                     </div>
                 </div>
-                <div className="disqus">
-                    <DiscussionEmbed
-                        shortname='openbooksv2'
-                        config={
-                            {
-                                url: `${process.env.REACT_APP_API_URI}/details/${book.ID}`,
-                                identifier: book.ID,
-                                title: `Comentarios en ${book.title}`,
-                                language: 'es_ES' //e.g. for Traditional Chinese (Taiwan)	
-                            }
-                        }
-                        />
-                </div>
                 <div className="details-content">
                     <p>Descripción : <br/> {book.content}</p>
+                    <div className="disqus">
+                        <DiscussionEmbed
+                            shortname='openbooksv2'
+                            config={
+                                {
+                                    url: `${process.env.REACT_APP_API_URI}details/${book.ID}`,
+                                    identifier: book.ID,
+                                    title: `Comentarios en ${book.title}`,
+                                    language: 'es_ES' //e.g. for Traditional Chinese (Taiwan)	
+                                }
+                            }
+                            />
+                    </div>
                     <div className="align-delete">
                         <Button className="download" href={book.url_download} target="_blank" rel="noopener noreferrer">Download</Button>
                     </div>
