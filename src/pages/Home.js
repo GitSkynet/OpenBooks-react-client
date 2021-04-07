@@ -18,10 +18,10 @@ class Home extends Component {
   getAllBooks = async () => {
       const categories = await service.getCategoriesFromApi()
       this.setState({ categories });
-      // const name = this.state.name;
-      // const count = 0;
-      // const allBooks = await service.getBooksFromApi(name, count);
-      // this.setState({ books: allBooks });
+      const name = this.state.name;
+      const count = 0;
+      const allBooks = await service.getBooksFromApi(name, count);
+      this.setState({ books: allBooks });
   };
 
   

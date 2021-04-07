@@ -11,7 +11,7 @@ class Service {
   }
 
   ////////////////////////////BOOKS FROM NY DATABASE///////////////////////////////////////
-  
+
   //Route GET book
   getBooks = async (pagina =0) => {
     try {
@@ -79,8 +79,8 @@ class Service {
 
   //<<<<<<<<<<<<<<<<<<<<<<<<<<<----------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  ////////////////////////////BOOKS FROM OPENLIBRA API///////////////////////////////////////
-  
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<-----BOOKS FROM OPENLIBRA API---->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
    //GET Counter items
    getCountItems = async (name) => {
     try {
@@ -95,7 +95,8 @@ class Service {
   //GET Route
   getBooksFromApi = async ( name, count) => {
     try {
-      const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}`);
+      const books = await axios.get(`https://www.etnassoft.com/api/v1/get/?category=${name}&results_range=${count},10 `);
+      console.log("!<<", books)
       return (books.data)
     } catch (error) {
       console.log(error)
@@ -126,7 +127,7 @@ class Service {
   searchBook = async (name) => {
     try {
       const res = await axios.get(`https://www.etnassoft.com/api/v1/get/?keyword=${name}`);
-      return res.data; 
+      return res.data;
     }catch (error) {
       console.log(error);
     }
@@ -163,7 +164,7 @@ class Service {
   getGoogleBooks = async (name) => {
     try {
       const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${name}&key=AIzaSyBpHucfDaQ0Otfjykymo8dYSYaJrsYrP54`);
-      return res.data.items;              
+      return res.data.items;
     } catch (error) {
       console.log(error)
     }
@@ -172,14 +173,14 @@ class Service {
   searchGoogle = async (query) => {
     try {
       const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyBpHucfDaQ0Otfjykymo8dYSYaJrsYrP54`);
-      return res; 
+      return res;
     }catch (error) {
       console.log(error);
     }
   };
 
   ////////////////////////////END BOOKS FROM GOOGLEBOOKS API/////////////////////////////////
-  
+
 
 }
 

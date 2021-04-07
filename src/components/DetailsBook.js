@@ -39,8 +39,25 @@ class DetailsBook extends Component {
                         <h5>Pages: {book.pages}</h5>
                         <h5>Publisher: {book.publisher}</h5>
                         <h5>{book.publisher_date}</h5>
+                        <div>
+                            <div className="rate">
+                                <fieldset className="rating book-rate">
+                                <input type="checkbox" id="star-c6" name="rating" value="5" />
+                                <label className="full" htmlFor="star-c6"></label>
+                                <input type="checkbox" id="star-c7" name="rating" value="4" />
+                                <label className="full" htmlFor="star-c7"></label>
+                                <input type="checkbox" id="star-c8" name="rating" value="3" />
+                                <label className="full" htmlFor="star-c8"></label>
+                                <input type="checkbox" id="star-c9" name="rating" value="2" />
+                                <label className="full" htmlFor="star-c9"></label>
+                                <input type="checkbox" id="star-c10" name="rating" value="1" />
+                                <label className="full" htmlFor="star-c10"></label>
+                                </fieldset>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                    <div className="separator"></div>
                 <div className="details-content">
                     <p>Descripción : <br/> {book.content}</p>
                     <div className="disqus">

@@ -42,7 +42,7 @@ class Books extends Component {
 
     paginaSiguiente = () => {
         let pagina = this.state.pagina;
-        let count = this.state.books.length;
+        let count = this.state.books?.length;
         let counter = this.state.counter;
         if (count < 10) {
             pagina = 0;

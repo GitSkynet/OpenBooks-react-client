@@ -18,6 +18,8 @@ import Navbar2 from "./components/Navbar2";
 import Footer from "./components/Footer";
 import GoogleBooks from "./components/GoogleBooks";
 import OpenLibra from "./components/OpenLibra";
+import Faq from "./components/Faq";
+import Contact from "./components/Contact";
 
 class App extends Component {
   render() {
@@ -34,6 +36,8 @@ class App extends Component {
             <Route exact path='/books/openlibra' component={OpenLibra} />
             <Route exact path='/books/upload/:id' component={UpdatedBook} />
             <Route exact path='/books/create' component={CreateBook} />
+            <Route exact path='/faq' component={Faq} />
+            <Route exact path='/contact' component={Contact} />
             <PrivateRoute exact path="/details/:id" component={DetailsBook} />
             <PrivateRoute exact path='/private' component={Private} />
           </Switch>

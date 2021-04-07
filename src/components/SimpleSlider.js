@@ -9,8 +9,10 @@ class SimpleSlider extends Component {
 
   getAllBooks = async () => {
       const name = this.props.nicename;
-      const allBooks = await service.getBooksFromApi(name);
+      const count = 0;
+      const allBooks = await service.getBooksFromApi(name, count);
       this.setState({ books: allBooks });
+      console.log("HERE", this.state.books)
   };
 
   componentDidMount = () =>{
@@ -70,7 +72,12 @@ class SimpleSlider extends Component {
             <div className="div-slider" key={book.ID}>
                 <div className="slider-item">
                   <a href={(`/details/${book.ID}`)}>
-                    <img src={book.cover} alt={book.title}/>
+                    {this.state.books.length === 0 ? (<>
+                      <img src="https://i.stack.imgur.com/1hvpD.jpg" alt={book.title}/>
+                    </>)
+                    :(<>
+                      <img src={book.cover} alt={book.title}/>
+                    </>)}
                   </a>
                 </div>
                 <div className="prueba1">
